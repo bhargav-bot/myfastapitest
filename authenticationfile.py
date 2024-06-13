@@ -9,8 +9,7 @@ from datetime import time,timedelta
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from jwt.exceptions import InvalidTokenError
-
-
+import time
 while True:
     try:
         conn=psycopg2.connect(host='localhost',database='postgres',user='bhargav',password='YESHA1496',port='5431',cursor_factory=RealDictCursor)
