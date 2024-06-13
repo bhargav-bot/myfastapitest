@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from database import *
 from jose import JWTError, jwt
 from fastapi.responses import HTMLResponse
+from datetime import datetime
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import psycopg2
@@ -36,6 +37,10 @@ def func2324325(var:dict):
     token=genratetoken(var)
     return "token is genrated:{}".format(token)
 
+@bhargav.get("/current_time")
+def get_current_time():
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return {"current_time": current_time}
 
 
 @bhargav.get('/get123/')
