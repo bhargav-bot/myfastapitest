@@ -13,11 +13,19 @@ class Settings(BaseSettings):
     secret_key:str=os.getenv("secret_key")
     algorithm:str=os.getenv("algorithm")
     ACCESS_TOKEN_EXPIRE_MINUTES:int=os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
+    database_port:str=os.getenv("database_port")
 
 
     class Config:
         env_file = ".env"
 
 Settings = Settings()
-
+print(Settings.database_hostname)
+print(Settings.database_password)
+print(Settings.database_name)
+print(Settings.database_username)
+print(Settings.secret_key)
+print(Settings.algorithm)
+print(Settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+print(Settings.database_port)
 
