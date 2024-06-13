@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     database_hostname:str='c67okggoj39697.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com'
-    database_port:int=5432
+    
     database_password:str='pfc2fb6bc2755d68700ca31d31c66e5f966621007d1bf721338a4544d868755f6'
     database_name:str='d7tfu32ti1me77'
     database_username:str='uegsmsrkgaomm8'
