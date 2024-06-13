@@ -9,10 +9,11 @@ from datetime import time,timedelta
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from jwt.exceptions import InvalidTokenError
+from config import Settings
 import time
 while True:
     try:
-        conn=psycopg2.connect(host='localhost',database='postgres',user='bhargav',password='YESHA1496',port='5431',cursor_factory=RealDictCursor)
+        conn=psycopg2.connect(host='{Settings.database_hostname}',database='{Settings.database_name}',user='{Settings.database_username}',password='{Settings.database_password}',port='5432',cursor_factory=RealDictCursor)
         cursor=conn.cursor()
         print("database connection successful")
         break
