@@ -11,6 +11,7 @@ from psycopg2.extras import RealDictCursor
 from jwt.exceptions import InvalidTokenError
 from config import Settings
 import time
+'''
 while True:
     try:
         conn=psycopg2.connect(host='{Settings.database_hostname}',database='{Settings.database_name}',user='{Settings.database_username}',password='{Settings.database_password}',port='5432',cursor_factory=RealDictCursor)
@@ -23,7 +24,7 @@ while True:
         time.sleep(2)
         print("retrying")
         continue
-
+'''
 SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 2
