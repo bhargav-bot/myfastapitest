@@ -19,7 +19,7 @@ import model
 bhargav=FastAPI()
 Base.metadata.create_all(bind=engine)
 
-
+'''
 while True:
     try:
         conn=psycopg2.connect(host='localhost',database='postgres',user='bhargav',password='YESHA1496',port='5431',cursor_factory=RealDictCursor)
@@ -32,7 +32,7 @@ while True:
         time.sleep(2)
         print("retrying")
         continue
-
+'''
 @bhargav.post('/login/')
 def func2324325(var:dict):
     token=genratetoken(var)
