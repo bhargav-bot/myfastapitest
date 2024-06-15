@@ -67,7 +67,7 @@ def dghth(var:PATEL,db:Session=Depends(get_db)):
     db.add(par)
     db.commit()
     db.refresh(par)
-    return {"list":par}
+    return {"li1st":par}
 
 @bhargav.put('/update2/{id}')
 def funcwegwg(id:int,var:PATEL,db:Session=Depends(get_db)):
