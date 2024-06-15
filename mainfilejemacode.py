@@ -20,6 +20,37 @@ bhargav=FastAPI()
 Base.metadata.create_all(bind=engine)
 
 '''
+
+'''
+@bhargav.delete("/del/{id}",status_code=status.HTTP_204_NO_CONTENT)
+def fergerf(id:int,db:Session=Depends(get_db)):
+    db.query(model.User12).filter(model.User12.user_id==id).delete()
+    db.commit()
+    
+@bhargav.post('/login/')
+def func2324325(var:dict):
+    token=genratetoken(var)
+    return "token is genrated:{}".format(token)
+
+@bhargav.get("/current_time")
+def get_current_time():
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return {"current_time": current_time}
+
+bhargav.get('/yesha/')
+def func1223(db:Session=Depends(get_db),d=Depends(check_token)):
+    e=db.query(model.User12).all()
+    print(e)
+    return {'list':e}
+@bhargav.post('/mypost',status_code=status.HTTP_201_CREATED)
+def dghth(var:PATEL,db:Session=Depends(get_db)):
+    par=model.User12(name=var.name,user_id=var.user_id,surname=var.surname)
+    db.add(par)
+    db.commit()
+    db.refresh(par)
+    return {"li1st":par}
+    
+
 while True:
     try:
         conn=psycopg2.connect(host='localhost',database='postgres',user='bhargav',password='YESHA1496',port='5431',cursor_factory=RealDictCursor)
@@ -32,43 +63,15 @@ while True:
         time.sleep(2)
         print("retrying")
         continue
-'''
-@bhargav.post('/login/')
-def func2324325(var:dict):
-    token=genratetoken(var)
-    return "token is genrated:{}".format(token)
-
-@bhargav.get("/current_time")
-def get_current_time():
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    return {"current_time": current_time}
-
-
 @bhargav.get('/get123/')
 def func234463():
     cursor.execute("""SELECT * FROM yourtable""")
     t=cursor.fetchall() 
     print(t)
     return {'list':t}
-@bhargav.get('/yesha/')
-def func1223(db:Session=Depends(get_db),d=Depends(check_token)):
-    e=db.query(model.User12).all()
-    print(e)
-    return {'list':e}
-@bhargav.post('/get12345/')
-def func234(d=Depends(check_token)):
-    
-    cursor.execute("""SELECT * FROM yourtable""")
-    t=cursor.fetchall() 
-    print(t)
-    return {'list':t}
-@bhargav.post('/mypost',status_code=status.HTTP_201_CREATED)
-def dghth(var:PATEL,db:Session=Depends(get_db)):
-    par=model.User12(name=var.name,user_id=var.user_id,surname=var.surname)
-    db.add(par)
-    db.commit()
-    db.refresh(par)
-    return {"li1st":par}
+@
+
+
 
 @bhargav.put('/update2/{id}')
 def funcwegwg(id:int,var:PATEL,db:Session=Depends(get_db)):
@@ -105,10 +108,7 @@ def func2324(var:BHARGAV,id:int):
     else:
         print("updated list is {}".format(d))
     return {'list':d}
-@bhargav.delete("/del/{id}",status_code=status.HTTP_204_NO_CONTENT)
-def fergerf(id:int,db:Session=Depends(get_db)):
-    db.query(model.User12).filter(model.User12.user_id==id).delete()
-    db.commit()
+
     
 
 
