@@ -26,7 +26,7 @@ Base.metadata.create_all(bind=engine)
 def fergerf(id:int,db:Session=Depends(get_db)):
     db.query(model.User12).filter(model.User12.user_id==id).delete()
     db.commit()
-    
+
 @bhargav.post('/login/')
 def func2324325(var:dict):
     token=genratetoken(var)
@@ -37,7 +37,7 @@ def get_current_time():
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return {"current_time": current_time}
 
-bhargav.get('/yesha/')
+@bhargav.get('/yesha/')
 def func1223(db:Session=Depends(get_db),d=Depends(check_token)):
     e=db.query(model.User12).all()
     print(e)
@@ -49,7 +49,47 @@ def dghth(var:PATEL,db:Session=Depends(get_db)):
     db.commit()
     db.refresh(par)
     return {"li1st":par}
-    
+
+@bhargav.put('/update2/{id}')
+def funcwegwg(id:int,var:PATEL,db:Session=Depends(get_db)):
+    db.query(model.User12).filter(model.User12.user_id==id).update(var.dict())
+    d=db.query(model.User12).all()
+    return d
+  
+
+my_list=[{'name':'bhargav','age':21,'subject':'python'}]
+
+def printlist():
+    print(my_list)
+printlist()
+@bhargav.get("/get")
+def func():
+    return {'list':my_list}
+
+
+@bhargav.post("/post",status_code=status.HTTP_201_CREATED)
+def func1(var:dict):
+    my_list.append(var)
+    return {'list':my_list}
+def finduserindex(age:int):
+    for i,j in enumerate(my_list):
+        if j['age']==age:
+            print(i)
+            return i
+        else:
+            continue
+
+
+@bhargav.delete("/delete/{age}",status_code=status.HTTP_204_NO_CONTENT)
+def func2(age:int):
+    d=finduserindex(age)
+    print(d)
+    if d is not None:
+        my_list.pop(d)
+        print(my_list)
+    else:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail='user not found ')
+    return {'list':my_list}
 
 while True:
     try:
@@ -69,15 +109,8 @@ def func234463():
     t=cursor.fetchall() 
     print(t)
     return {'list':t}
-@
 
 
-
-@bhargav.put('/update2/{id}')
-def funcwegwg(id:int,var:PATEL,db:Session=Depends(get_db)):
-    db.query(model.User12).filter(model.User12.user_id==id).update(var.dict())
-    d=db.query(model.User12).all()
-    return d
 
 
 
@@ -114,37 +147,3 @@ def func2324(var:BHARGAV,id:int):
 
 
     
-
-my_list=[{'name':'bhargav','age':21,'subject':'python'}]
-
-def printlist():
-    print(my_list)
-printlist()
-@bhargav.get("/get")
-def func():
-    return {'list':my_list}
-
-
-@bhargav.post("/post",status_code=status.HTTP_201_CREATED)
-def func1(var:dict):
-    my_list.append(var)
-    return {'list':my_list}
-def finduserindex(age:int):
-    for i,j in enumerate(my_list):
-        if j['age']==age:
-            print(i)
-            return i
-        else:
-            continue
-
-
-@bhargav.delete("/delete/{age}",status_code=status.HTTP_204_NO_CONTENT)
-def func2(age:int):
-    d=finduserindex(age)
-    print(d)
-    if d is not None:
-        my_list.pop(d)
-        print(my_list)
-    else:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail='user not found ')
-    return {'list':my_list}
