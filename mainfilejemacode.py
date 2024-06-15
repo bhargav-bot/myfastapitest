@@ -90,7 +90,7 @@ def func2(age:int):
     else:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail='user not found ')
     return {'list':my_list}
-
+'''
 while True:
     try:
         conn=psycopg2.connect(host='localhost',database='postgres',user='bhargav',password='YESHA1496',port='5431',cursor_factory=RealDictCursor)
@@ -103,6 +103,7 @@ while True:
         time.sleep(2)
         print("retrying")
         continue
+        '''
 @bhargav.get('/get123/')
 def func234463():
     cursor.execute("""SELECT * FROM yourtable""")
