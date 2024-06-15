@@ -15,10 +15,24 @@ from authenticationfile import genratetoken
 from authenticationfile import check_token
 from model import User12
 import time,datetime
+from starlette.responses import RedirectResponse
 import model
+
+
+
+
+from fastapi import FastAPI, Form, Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+
+
 bhargav=FastAPI()
 Base.metadata.create_all(bind=engine)
 
+templates = Jinja2Templates(directory="templates")
+@bhargav.get("/getlog")
+async def read_form():
+    return templates.TemplateResponse("login.html", {"request": Request})
 '''
 
 '''
@@ -112,6 +126,9 @@ def func234463():
     return {'list':t}
 
 
+@bhargav.get('/gettime/')
+def func432():
+    return RedirectResponse("https://www.utctime.net/utc-timestamp.net")
 
 
 
