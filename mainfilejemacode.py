@@ -36,7 +36,7 @@ def show_login_form(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
 @bhargav.post("/login")
-def login(request: Request, username: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
+def login(request: Request, username: int = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
     user = db.query(Logininfo).filter(Logininfo.username == username).first()
     
     if user is None or user==0  :
