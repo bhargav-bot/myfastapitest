@@ -35,7 +35,7 @@ def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 @bhargav.post("/login")
 def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
-    d=db.query(logininfo).filter(logininfo.username==username).first()
+    d=db.query(Logininfo).filter(Logininfo.username==username).first()
     if d is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="user not found")
     else:
