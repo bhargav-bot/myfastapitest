@@ -31,11 +31,32 @@ Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")
 @bhargav.get("/login", response_class=HTMLResponse)
+def logidn(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@bhargav.post("/login")
+def read_fosrm(request: Request, username: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
+    user = db.query(Logininfo).filter(Logininfo.username == username).first()
+    print(user)
+    
+    if user is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    
+    # Assuming you want to check the password as well, you can add this logic
+    if user.password!=password:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect password")
+    
+    return RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
+
+@bhargav.get("/welcome")
+def welcojme(request: Request):
+    return templates.TemplateResponse("welcome.html", {"request": request})
+@bhargav.get("/login", response_class=HTMLResponse)
 def logidrn(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 @bhargav.post("/login")
 def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
-    d =db.query(Logininfo).filter(Logininfo.username==username)
+    d =db.query(Logininfo).filter(Logininfo.username==username).first()
     print(d)
     if d is None or d==0:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="user not found")
