@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from time import time
-from schemas import BHARGAV,PATEL,Logincredentials
+from schemas import BHARGAV,PATEL,Logincredentials,Logininfo
 from fastapi.middleware.cors import CORSMiddleware
 from authenticationfile import genratetoken
 from authenticationfile import check_token
