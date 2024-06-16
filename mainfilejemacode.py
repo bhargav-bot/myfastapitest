@@ -31,7 +31,7 @@ Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")
 @bhargav.get("/login", response_class=HTMLResponse)
-def login(request: Request):
+def logidrn(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 @bhargav.post("/login")
 def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
