@@ -35,7 +35,7 @@ def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 @bhargav.post("/login")
 def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
-    d=db.query(Logininfo).filter(Logininfo.username==username).first()
+    d =db.query(Logininfo).filter(Logininfo.username==username)
     if d is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="user not found")
     else:
@@ -44,7 +44,12 @@ def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:
 @bhargav.get("/welcome")
 def welcome(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
-
+@bhargav.post("/signup")
+def sewsg(request:Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
+    d=Logincredentials(username=username,password=password)
+    db.add(d)
+    db.commit()
+    db.refresh(d)
     
 @bhargav.delete("/del/{id}",status_code=status.HTTP_204_NO_CONTENT)
 def fergerf(id:int,db:Session=Depends(get_db)):
