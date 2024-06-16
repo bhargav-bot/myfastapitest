@@ -48,35 +48,52 @@ def read_fosrm(request: Request, username: str = Form(...), password: str = Form
     
     return RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
 
-@bhargav.get("/welcome")
-def welcojme(request: Request):
-    return templates.TemplateResponse("welcome.html", {"request": request})
-@bhargav.get("/login", response_class=HTMLResponse)
-def logidrn(request: Request):
+from fastapi import FastAPI, Request, Form, Depends, HTTPException, status
+from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.templating import Jinja2Templates
+from sqlalchemy.orm import Session
+from your_database_module import get_db, Logininfo, Logincredentials  # Replace with actual import
+
+app = FastAPI()
+templates = Jinja2Templates(directory="templates")
+
+# GET request for login
+@app.get("/login", response_class=HTMLResponse)
+def show_login_form(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
-@bhargav.post("/login")
-def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
-    d =db.query(Logininfo).filter(Logininfo.username==username).first()
-    print(d)
-    if d is None or d==0:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="user not found")
-        exit
-    else:
-        response = RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
-        return response
-@bhargav.get("/welcome")
+
+# POST request for login
+@app.post("/login")
+def login(request: Request, username: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
+    user = db.query(Logininfo).filter(Logininfo.username == username).first()
+    
+    if user is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    
+    if user.password != password:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect password")
+    
+    return RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
+
+# GET request for welcome page
+@app.get("/welcome", response_class=HTMLResponse)
 def welcome(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
-@bhargav.get("/signup", response_class=HTMLResponse)
-def login(request: Request):
+
+# GET request for signup
+@app.get("/signup", response_class=HTMLResponse)
+def show_signup_form(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
-@bhargav.post("/signup")
-def sewsg(request:Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
-    d=Logincredentials(username=username,password=password)
-    db.add(d)
+
+# POST request for signup
+@app.post("/signup")
+def signup(request: Request, username: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
+    new_user = Logincredentials(username=username, password=password)
+    db.add(new_user)
     db.commit()
-    db.refresh(d)
-    return d
+    db.refresh(new_user)
+    return {"message": "User created successfully", "user": new_user}
+
     
 @bhargav.delete("/del/{id}",status_code=status.HTTP_204_NO_CONTENT)
 def fergerf(id:int,db:Session=Depends(get_db)):
