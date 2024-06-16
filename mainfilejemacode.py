@@ -30,7 +30,7 @@ bhargav=FastAPI()
 Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")
-'''
+
 @bhargav.get("/login", response_class=HTMLResponse)
 def show_login_form(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
@@ -39,18 +39,15 @@ def show_login_form(request: Request):
 def login(request: Request, username: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
     user = db.query(Logininfo).filter(Logininfo.username == username).first()
     
-    if user is None:
+    if user is None or user==0  :
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
-    
-    if user.password != password:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Incorrect password")
-    
-    return RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
+    else:
+        return RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
 
 @bhargav.get("/welcome", response_class=HTMLResponse)
 def welcome(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
-'''
+
 @bhargav.get("/signup", response_class=HTMLResponse)
 def show_signup_form(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
