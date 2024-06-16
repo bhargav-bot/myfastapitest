@@ -56,8 +56,8 @@ def show_signup_form(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
 
 @bhargav.post("/signup")
-def signup(var:Logincredentials, db: Session = Depends(get_db)):
-    new_user = Logincredentials(Username=var.Username, Password=var.Password)
+def signup(Username:int=Form(...),Password:str=Form(...), db: Session = Depends(get_db)):
+    new_user = Logincredentials(Username=Username, Password=Password)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
