@@ -20,6 +20,7 @@ class Settings(BaseSettings):
         env_file = ".env"
 
 Settings = Settings()
+'''
 print(Settings.database_hostname)
 print(Settings.database_password)
 print(Settings.database_name)
@@ -28,4 +29,4 @@ print(Settings.secret_key)
 print(Settings.algorithm)
 print(Settings.ACCESS_TOKEN_EXPIRE_MINUTES)
 print(Settings.database_port)
-
+'''
