@@ -38,9 +38,10 @@ def show_login_form(request: Request):
 @bhargav.post("/login")
 def login(request: Request, username: int = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
     user = db.query(Logininfo).filter(Logininfo.username == username).first()
-    
+    print(user)
     if user is None or user==0  :
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+        exit
     else:
         return RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
 
