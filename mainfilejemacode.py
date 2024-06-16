@@ -57,11 +57,11 @@ def show_signup_form(request: Request):
 
 @bhargav.post("/signup")
 def signup(username:int=Form(...),password:str=Form(...), db: Session = Depends(get_db)):
-    new_user = Logincredentials(username=username, password=password)
-    db.add(new_user)
+    var=Logininfo(username=username,password=password)
+    db.add(var)
     db.commit()
-    db.refresh(new_user)
-    return {"message": "User created successfully", "user": new_user}
+    db.refresh(var)
+    return var
     
 @bhargav.delete("/del/{id}",status_code=status.HTTP_204_NO_CONTENT)
 def fergerf(id:int,db:Session=Depends(get_db)):
