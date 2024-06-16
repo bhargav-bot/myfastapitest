@@ -39,6 +39,7 @@ def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:
     print(d)
     if d is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="user not found")
+        exit
     else:
         response = RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
         return response
