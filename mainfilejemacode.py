@@ -37,7 +37,7 @@ def logidrn(request: Request):
 def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
     d =db.query(Logininfo).filter(Logininfo.username==username)
     print(d)
-    if d is None:
+    if d is None or d==0:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="user not found")
         exit
     else:
