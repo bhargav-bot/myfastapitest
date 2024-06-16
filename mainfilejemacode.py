@@ -57,7 +57,7 @@ def show_signup_form(request: Request):
 
 @bhargav.post("/signup")
 def signup(request: Request, Username: str = Form(...), Password: str = Form(...), db: Session = Depends(get_db)):
-    new_user = Logincredentials(user_name=int(Username), pass_word=Password)
+    new_user = Logincredentials(Username=int(Username), Password=Password)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)

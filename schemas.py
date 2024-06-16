@@ -20,10 +20,10 @@ class PATEL(BaseModel):
         orm_mode=True
 class any(BaseModel):
     name:str
-    
+
 class Logincredentials(BaseModel):
-    user_name:int
-    pass_word:str
+    Username:int
+    Password:str
     class config:
         orm_mode=True
 
