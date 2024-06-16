@@ -22,9 +22,10 @@ class any(BaseModel):
     name:str
 
 class Logincredentials(BaseModel):
-    Username:int
-    Password:str
+    username:int
+    password:str
     class config:
+        orm_mode=True
         orm_mode=True
 
 class Logininfo(BaseModel):

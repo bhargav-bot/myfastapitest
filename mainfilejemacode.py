@@ -56,8 +56,8 @@ def show_signup_form(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
 
 @bhargav.post("/signup")
-def signup(Username:int=Form(...),Password:str=Form(...), db: Session = Depends(get_db)):
-    new_user = Logincredentials(Username=Username, Password=Password)
+def signup(username:int=Form(...),password:str=Form(...), db: Session = Depends(get_db)):
+    new_user = Logincredentials(username=username, password=password)
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
@@ -102,7 +102,7 @@ my_list=[{'name':'bhargav','age':21,'subject':'python'}]
 
 def printlist():
     print(my_list)
-printlist()
+
 @bhargav.get("/get")
 def func():
     return {'list':my_list}
