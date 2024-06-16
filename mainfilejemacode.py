@@ -48,7 +48,7 @@ def welcome(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
 @bhargav.get("/signup", response_class=HTMLResponse)
 def login(request: Request):
-    return templates.TemplateResponse("login.html", {"request": request})
+    return templates.TemplateResponse("signup.html", {"request": request})
 @bhargav.post("/signup")
 def sewsg(request:Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
     d=Logincredentials(username=username,password=password)
