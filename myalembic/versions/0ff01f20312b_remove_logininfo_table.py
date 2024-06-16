@@ -19,14 +19,14 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    op.drop_table('logininfo')
+    op.create_table('logininfo',
+        sa.Column('username', sa.Integer, primary_key=True, nullable=False),
+        sa.Column('password', sa.String, nullable=False)
+    )  
 
   
 
 
 def downgrade() -> None:
-    op.create_table('logininfo',
-        sa.Column('username', sa.Integer, primary_key=True, nullable=False),
-        sa.Column('password', sa.String, nullable=False)
-    )   
+    op.drop_table('logininfo')
     
