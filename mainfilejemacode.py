@@ -43,7 +43,7 @@ def login(request: Request, username: int = Form(...), password: str = Form(...)
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
     elif user is not None and user.password != password:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect password")
-    elif:
+    else:
         return RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
 
 @bhargav.get("/welcome", response_class=HTMLResponse)
