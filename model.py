@@ -13,7 +13,7 @@ class User12(Base):
     surname=Column(String,nullable=False,default="Patel")
 
 
-class logininfo(Base):
+class Logininfo(Base):
     __tablename__='logininfo'
     username=Column(Integer,nullable=False,primary_key=True)
     password=Column(String,nullable=False)
