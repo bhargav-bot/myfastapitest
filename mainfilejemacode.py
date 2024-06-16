@@ -36,6 +36,7 @@ def logidrn(request: Request):
 @bhargav.post("/login")
 def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
     d =db.query(Logininfo).filter(Logininfo.username==username)
+    print(d)
     if d is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="user not found")
     else:
