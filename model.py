@@ -11,3 +11,9 @@ class User12(Base):
     name=Column(String,nullable=False)
     user_id=Column(Integer,nullable=False,primary_key=True)
     surname=Column(String,nullable=False,default="Patel")
+
+
+class logininfo(Base):
+    __tablename__='logininfo'
+    username=Column(Integer,nullable=False,primary_key=True)
+    password=Column(String,nullable=False)

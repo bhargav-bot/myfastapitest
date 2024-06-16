@@ -9,11 +9,11 @@ from fastapi.templating import Jinja2Templates
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from time import time
-from schemas import BHARGAV,PATEL
+from schemas import BHARGAV,PATEL,Logincredentials
 from fastapi.middleware.cors import CORSMiddleware
 from authenticationfile import genratetoken
 from authenticationfile import check_token
-from model import User12
+from model import User12,logininfo
 import time,datetime
 from starlette.responses import RedirectResponse
 import model
@@ -30,12 +30,22 @@ bhargav=FastAPI()
 Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")
-@bhargav.get("/getlog")
-async def read_form():
-    return templates.TemplateResponse("login.html", {"request": Request})
-'''
+@bhargav.get("/login", response_class=HTMLResponse)
+def login(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+@bhargav.post("/login")
+def read_form(var:Logincredentials,db:Session=Depends(get_db)):
+    d=db.query(logininfo).filter(logininfo.username==var.username).first()
+    if d is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="user not found")
+    else:
+        response = RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
+    return response
+@bhargav.get("/welcome")
+def welcome(request: Request):
+    return templates.TemplateResponse("welcome.html", {"request": request})
 
-'''
+    
 @bhargav.delete("/del/{id}",status_code=status.HTTP_204_NO_CONTENT)
 def fergerf(id:int,db:Session=Depends(get_db)):
     db.query(model.User12).filter(model.User12.user_id==id).delete()
