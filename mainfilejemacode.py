@@ -34,8 +34,8 @@ templates = Jinja2Templates(directory="templates")
 def login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 @bhargav.post("/login")
-def read_form(var:Logincredentials,db:Session=Depends(get_db)):
-    d=db.query(logininfo).filter(logininfo.username==var.username).first()
+def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
+    d=db.query(logininfo).filter(logininfo.username==username).first()
     if d is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="user not found")
     else:

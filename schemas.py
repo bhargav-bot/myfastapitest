@@ -25,10 +25,6 @@ class Logincredentials(BaseModel):
     class config:
         orm_mode=True
 
-class Request(BaseModel):
-   username:int 
-   password:str
-   class config:
-        orm_mode=True
+
 
 
