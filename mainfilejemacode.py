@@ -40,7 +40,7 @@ def read_form(request: Request,username:str=Form(...),password:str=Form(...),db:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail="user not found")
     else:
         response = RedirectResponse(url="/welcome", status_code=status.HTTP_302_FOUND)
-    return response
+        return response
 @bhargav.get("/welcome")
 def welcome(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
@@ -53,6 +53,7 @@ def sewsg(request:Request,username:str=Form(...),password:str=Form(...),db:Sessi
     db.add(d)
     db.commit()
     db.refresh(d)
+    return d
     
 @bhargav.delete("/del/{id}",status_code=status.HTTP_204_NO_CONTENT)
 def fergerf(id:int,db:Session=Depends(get_db)):
