@@ -30,6 +30,7 @@ bhargav=FastAPI()
 Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")
+'''
 @bhargav.get("/login", response_class=HTMLResponse)
 def show_login_form(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
@@ -49,7 +50,7 @@ def login(request: Request, username: str = Form(...), password: str = Form(...)
 @bhargav.get("/welcome", response_class=HTMLResponse)
 def welcome(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
-
+'''
 @bhargav.get("/signup", response_class=HTMLResponse)
 def show_signup_form(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
