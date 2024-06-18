@@ -55,12 +55,12 @@ def show_signup_form(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
 
 @bhargav.post("/signup")
-def signup(username:int=Form(...),password:str=Form(...), db: Session = Depends(get_db)):
+def signup(request: Request, username:int=Form(...),password:str=Form(...), db: Session = Depends(get_db)):
     var=Logininfo(username=username,password=password)
     db.add(var)
     db.commit()
     db.refresh(var)
-    return templates.TemplateResponse("signupsuccessful.html", {"username": username})
+    return templates.TemplateResponse("signupsuccessful.html", {"request": request})
 
     
 @bhargav.delete("/del/{id}",status_code=status.HTTP_204_NO_CONTENT)
