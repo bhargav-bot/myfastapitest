@@ -18,5 +18,20 @@ class PATEL(BaseModel):
     surname:str
     class config:
         orm_mode=True
+class any(BaseModel):
+    name:str
+
+class Logincredentials(BaseModel):
+    username:int
+    password:str
+    class config:
+        orm_mode=True
+        orm_mode=True
+
+class Logininfo(BaseModel):
+    username:int
+    password:str
+    class config:
+        orm_mode=True
 
 
