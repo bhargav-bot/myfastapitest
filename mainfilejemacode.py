@@ -60,7 +60,7 @@ def signup(username:int=Form(...),password:str=Form(...), db: Session = Depends(
     db.add(var)
     db.commit()
     db.refresh(var)
-    return templates.TemplateResponse("signup_success.html", {"username": username})
+    return templates.TemplateResponse("signupsuccessful.html", {"username": username})
 
     
 @bhargav.delete("/del/{id}",status_code=status.HTTP_204_NO_CONTENT)
