@@ -80,7 +80,10 @@ def test_signup(client1):
 
     assert response.status_code ==200
 
+def test_signup1(client1):
+    response=client1.post("/signup", data={"username":54438323, "password":"1234"})
 
+    assert response.status_code ==200
 def test_login(client1):
     response=client1.post("/login",data={"username":54438323,"password":"1234"})
 
