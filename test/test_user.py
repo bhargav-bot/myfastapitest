@@ -30,7 +30,7 @@ def get_db_test():
 
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="module")
 def session():
     print("my session module is runnning")
     Base.metadata.drop_all(bind=engine)
