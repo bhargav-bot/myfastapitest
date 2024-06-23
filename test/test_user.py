@@ -72,9 +72,9 @@ def client1():
     def get_db_test():
             
         try:              
-            yield session
+            yield session1
         finally:
-            session.close()
+            session1.close()
     bhargav.dependency_overrides[get_db]=get_db_test
     yield TestClient(bhargav)
 
