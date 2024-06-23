@@ -28,7 +28,7 @@ def get_db_test():
         db.close()  
 
 
-bhargav.dependency_overrides[get_db]=get_db_test
+
 
 @pytest.fixture 
 def session():
@@ -51,6 +51,7 @@ def client(session):
             yield session
         finally:
             session.close()
+    bhargav.dependency_overrides[get_db]=get_db_test
 
     yield TestClient(bhargav12)
 
