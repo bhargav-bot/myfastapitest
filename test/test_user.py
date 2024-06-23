@@ -75,13 +75,13 @@ def test_root(client):
     assert response.status_code == 200
 
 
-def test_signup(client):
+def test_signup(client1):
     response=client1.post("/signup", data={"username":54438323, "password":"1234"})
 
     assert response.status_code ==200
 
 
-def test_login(client):
+def test_login(client1):
     response=client1.post("/login",data={"username":54438323,"password":"1234"})
 
     assert response.status_code == 200
