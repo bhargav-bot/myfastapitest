@@ -5,28 +5,27 @@ import os
 load_dotenv()
 
 class Settings(BaseSettings):
-    database_hostname:str=os.getenv("database_hostname")
-    database_password:str=os.getenv("database_password")
-    database_name:str=os.getenv("database_name")
-    database_username:str=os.getenv("database_username")
-
-    secret_key:str=os.getenv("secret_key")
-    algorithm:str=os.getenv("algorithm")
-    ACCESS_TOKEN_EXPIRE_MINUTES:int=os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
-    database_port:str=os.getenv("database_port")
-
-
+    database_hostname1: str = os.getenv("database_hostname1")
+    database_password1: str = os.getenv("database_password1")
+    database_name1: str = os.getenv("database_name1")
+    database_username1: str = os.getenv("database_username1")
+    secret_key1: str = os.getenv("secret_key1")
+    algorithm1: str = os.getenv("algorithm1")
+    access_token_expire_minutes1: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
+    database_port1: str = os.getenv("database_port")
+    DATABASE_HOSTNAME: str = os.getenv("DATABASE_HOSTNAME")
+    DATABASE_PASSWORD: str = os.getenv("DATABASE_PASSWORD")
+    DATABASE_NAME: str = os.getenv("DATABASE_NAME")
+    DATABASE_USERNAME: str = os.getenv("DATABASE_USERNAME")
+    SECRET_KEY: str = os.getenv("SECRET_KEY")
+    ALGORITHM: str = os.getenv("ALGORITHM")
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
+    DATABASE_PORT: str = os.getenv("DATABASE_PORT")
     class Config:
         env_file = ".env"
 
+
+
 Settings = Settings()
-'''
-print(Settings.database_hostname)
-print(Settings.database_password)
-print(Settings.database_name)
-print(Settings.database_username)
-print(Settings.secret_key)
-print(Settings.algorithm)
-print(Settings.ACCESS_TOKEN_EXPIRE_MINUTES)
-print(Settings.database_port)
-'''
+
+

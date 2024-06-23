@@ -9,7 +9,13 @@ class BHARGAV(BaseModel):
     id:int
     class config:
         orm_mode=True
-
+class BHARGAV12(BaseModel):
+    name:str
+    age:int
+    id:int
+    token:str
+    class config:
+        orm_mode=True
 
 
 class PATEL(BaseModel):

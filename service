@@ -1,0 +1,10 @@
+[Unit]
+Description=Watch bhargavnufolder and pull changes on file modification
+
+[Service]
+ExecStart=/Users/bhargav/Desktop/python/vscode/bhargavnufolder/watch.py
+Restart=always
+User=bhargav
+
+[Install]
+WantedBy=multi-user.target

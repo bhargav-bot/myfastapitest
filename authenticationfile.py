@@ -2,7 +2,7 @@ from jose import JWTError, jwt
 from datetime import datetime,timedelta
 from fastapi import Depends,status,HTTPException
 from fastapi.security import oauth2,OAuth2PasswordBearer,OAuth2PasswordRequestForm
-from mainfilejemacode import BHARGAV
+from schemas import BHARGAV,BHARGAV12
 oauth2_scheme=OAuth2PasswordBearer(tokenUrl='login')
 from time import time,sleep
 from datetime import time,timedelta
@@ -38,7 +38,7 @@ def genratetoken(dat:dict):
     print(exp)
     token=jwt.encode(to_encode,SECRET_KEY,algorithm=ALGORITHM)
     var = BHARGAV(**dat)
-    getvalues(var,token)
+    #getvalues(var,token)
     print("expire time is {}".format(expire))
     return token
 def check_token(token:str=Depends(oauth2_scheme)):
@@ -75,7 +75,7 @@ def checktoken(token:str):
         return False
 
 '''
-def getvalues(var:BHARGAV,token:str):
-    cursor.execute("""INSERT INTO tokencode (user_id, token, time) VALUES (%s, %s, %s)""", (var.id, token, datetime.utcnow()))
-    conn.commit()
+#def getvalues(var:BHARGAV,token:str):
+   # cursor.execute("""INSERT INTO tokencode (user_id, token, time) VALUES (%s, %s, %s)""", (var.id, token, datetime.utcnow()))
+   # conn.commit()
     

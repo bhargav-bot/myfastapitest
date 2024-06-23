@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  api:
+    image: bhargavbot/myrepo
+    container_name: bhargavnufolder-api
+    depends_on:
+      - postgres
+    ports:
+      - "80:8008"
+
+
+    environment:
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - ALGORITHM=${ALGORITHM}
+      - SECRET_KEY=${SECRET_KEY}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+      - DATABASE_PORT=${DATABASE_PORT}
+    command: ["uvicorn", "postgresfilejemacode:bhargav12", "--host", "0.0.0.0", "--port", "8008"]
+
+
+  postgres:
+    image: postgres
+    container_name: bhargavnufolder-postgres
+    environment:
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+      - POSTGRES_USER=${DATABASE_USERNAME}
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+
+volumes:
+  postgres-db:
+
+
