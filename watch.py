@@ -19,12 +19,12 @@ class MyHandler(FileSystemEventHandler):
             if 'nothing to commit' not in status_output:
                 # If changes exist, add, commit, and push
                 os.system('git add . && git commit -m "Updated watch.py to automatically push changes to GitHub" && git push origin main')
-                # Clone changes to server via SSH
-                ssh_client = paramiko.SSHClient()
-                ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+                # Clone changes to server via SSH using Paramiko
                 try:
+                    ssh_client = paramiko.SSHClient()
+                    ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                     ssh_client.connect('159.89.42.243', username='Yesha', password='Yesha@1496')
-                    ssh_client.exec_command('cd /path/to/remote/repository && git pull origin main')
+                    ssh_client.exec_command('cd /home/Yesha/myfastapitest && git pull origin main')
                     logging.info('Changes pulled from GitHub to server successfully')
                 except Exception as e:
                     logging.error(f'Error executing SSH command: {str(e)}')
@@ -43,12 +43,12 @@ class MyHandler(FileSystemEventHandler):
             if 'nothing to commit' not in status_output:
                 # If changes exist, add, commit, and push
                 os.system('git add . && git commit -m "Updated watch.py to automatically push changes to GitHub" && git push origin main')
-                # Clone changes to server via SSH
-                ssh_client = paramiko.SSHClient()
-                ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+                # Clone changes to server via SSH using Paramiko
                 try:
+                    ssh_client = paramiko.SSHClient()
+                    ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                     ssh_client.connect('159.89.42.243', username='Yesha', password='Yesha@1496')
-                    ssh_client.exec_command('cd /path/to/remote/repository && git pull origin main')
+                    ssh_client.exec_command('cd /home/Yesha/myfastapitest && git pull origin main')
                     logging.info('Changes pulled from GitHub to server successfully')
                 except Exception as e:
                     logging.error(f'Error executing SSH command: {str(e)}')
@@ -68,7 +68,4 @@ if __name__ == "__main__":
     try:
         while True:
             time.sleep(1)
-    except KeyboardInterrupt:
-        observer.stop()
-
-    observer.join()
+    except Keyboa
