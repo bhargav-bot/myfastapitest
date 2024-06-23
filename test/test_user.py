@@ -46,8 +46,7 @@ def session():
 def client(session):
     def get_db_test():
             
-        try:
-                
+        try:              
             yield session
         finally:
             session.close()
