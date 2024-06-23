@@ -74,19 +74,20 @@ def test_root(client):
     print(response.json())
     assert response.status_code == 200
 
-'''
 
-def test_login():
-    response=client1.post("/login",data={"username":543,"password":"1234"})
+def test_signup(session):
+    response=client1.post("/signup", data={"username":54438323, "password":"1234"})
+
+    assert response.status_code ==200
+
+
+def test_login(session):
+    response=client1.post("/login",data={"username":54438323,"password":"1234"})
 
     assert response.status_code == 200
 
 
-def test_signup():
-    response=client1.post("/signup", data={"username":5443823, "password":"1234"})
 
-    assert response.status_code ==201
-''' 
 def test_login12(client1):
     response=client1.post("/login12", json={"name":"ketan", "age":43,"id":345365})
     
