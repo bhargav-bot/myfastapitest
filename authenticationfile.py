@@ -38,7 +38,7 @@ def genratetoken(dat:dict):
     print(exp)
     token=jwt.encode(to_encode,SECRET_KEY,algorithm=ALGORITHM)
     var = BHARGAV(**dat)
-    getvalues(var,token)
+    #getvalues(var,token)
     print("expire time is {}".format(expire))
     return token
 def check_token(token:str=Depends(oauth2_scheme)):
@@ -75,7 +75,7 @@ def checktoken(token:str):
         return False
 
 '''
-def getvalues(var:BHARGAV,token:str):
-    cursor.execute("""INSERT INTO tokencode (user_id, token, time) VALUES (%s, %s, %s)""", (var.id, token, datetime.utcnow()))
-    conn.commit()
+#def getvalues(var:BHARGAV,token:str):
+   # cursor.execute("""INSERT INTO tokencode (user_id, token, time) VALUES (%s, %s, %s)""", (var.id, token, datetime.utcnow()))
+   # conn.commit()
     
