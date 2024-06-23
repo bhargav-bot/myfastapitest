@@ -2,7 +2,7 @@ from jose import JWTError, jwt
 from datetime import datetime,timedelta
 from fastapi import Depends,status,HTTPException
 from fastapi.security import oauth2,OAuth2PasswordBearer,OAuth2PasswordRequestForm
-from schemas import BHARGAV
+from schemas import BHARGAV,BHARGAV12
 oauth2_scheme=OAuth2PasswordBearer(tokenUrl='login')
 from time import time,sleep
 from datetime import time,timedelta

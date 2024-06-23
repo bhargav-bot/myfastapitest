@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from time import time
-from schemas import BHARGAV,PATEL,Logincredentials,Logininfo
+from schemas import BHARGAV,PATEL,Logincredentials,Logininfo,BHARGAV12
 from fastapi.middleware.cors import CORSMiddleware
 from authenticationfile import genratetoken
 from authenticationfile import check_token
@@ -75,7 +75,9 @@ def fergerf(id:int,db:Session=Depends(get_db)):
 @bhargav.post('/login12/')
 def func2324325(var:dict):
     token=genratetoken(var)
-    return "token is genrated:{}".format(token)
+    var12=BHARGAV(**var)
+    finalvar=BHARGAV12(name=var12.name,age=var12.age,token=token,id=var12.id)
+    return finalvar
 
 @bhargav.get("/current_time")
 def get_current_time():
