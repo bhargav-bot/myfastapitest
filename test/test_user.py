@@ -20,10 +20,15 @@ test_sessionlocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base.metadata.create_all(bind=engine)
 
+def get_db_test():
+    try:
+        db = test_sessionlocal()
+        yield db
+    finally:
+        db.close()  
 
 
-
-
+bhargav.dependency_overrides[get_db]=get_db_test
 
 @pytest.fixture 
 def session():
@@ -48,7 +53,7 @@ def client(session):
             session.close()
 
     yield TestClient(bhargav12)
-    
+
 bhargav.dependency_overrides[get_db]=get_db_test
 
 @pytest.fixture
