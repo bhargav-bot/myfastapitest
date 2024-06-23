@@ -2,10 +2,10 @@ from fastapi.testclient import TestClient
 from postgresfilejemacode import bhargav12
 from mainfilejemacode import bhargav
 from schemas import BHARGAV,BHARGAV12
-
+import requests
 import json
 import pytest
-from fastapi import requests
+
 client = TestClient(bhargav12)
 client1=TestClient(bhargav)
 def test_root():
@@ -43,4 +43,4 @@ def test_ifo():
 def test_heroku():
     url='https://bhargav-api-6b3bcd214c72.herokuapp.com/getinfo/'
     response=requests.get(url)
-
+    print(response.json())
