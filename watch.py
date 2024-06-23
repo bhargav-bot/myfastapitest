@@ -68,4 +68,7 @@ if __name__ == "__main__":
     try:
         while True:
             time.sleep(1)
-    except Keyboa
+    except KeyboardInterrupt:
+        observer.stop()
+
+    observer.join()
