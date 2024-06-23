@@ -54,7 +54,7 @@ def login(request: Request, username: int = Form(...), password: str = Form(...)
 def welcome(request: Request):
     return templates.TemplateResponse("welcome.html", {"request": request})
 
-@bhargav.get("/signup", response_class=HTMLResponse)
+@bhargav.get("/signup", response_class=HTMLResponse,status_code=status.HTTP_201_CREATED)
 def show_signup_form(request: Request):
     return templates.TemplateResponse("signup.html", {"request": request})
 
@@ -72,7 +72,7 @@ def fergerf(id:int,db:Session=Depends(get_db)):
     db.query(model.User12).filter(model.User12.user_id==id).delete()
     db.commit()
 
-@bhargav.post('/login/')
+@bhargav.post('/login12/')
 def func2324325(var:dict):
     token=genratetoken(var)
     return "token is genrated:{}".format(token)
@@ -144,6 +144,8 @@ def func2(age:int):
 @bhargav.get('/gettime/')
 def func432():
     return RedirectResponse("https://www.utctime.net/utc-timestamp.net")
+
+
 
 
     
