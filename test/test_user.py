@@ -27,7 +27,8 @@ def test_signup():
 '''
 def test_login12():
     response=client1.post("/login12", json={"name":"ketan", "age":43,"id":345365})
-    info = BHARGAV12(response.dict())
+    
+    info = BHARGAV12(**response.json())
     assert response.status_code == 200
     assert info.name == "ketan"
     assert info.age == 43
