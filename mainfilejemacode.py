@@ -44,7 +44,7 @@ def login(request: Request, username: int = Form(...), password: str = Form(...)
     user = db.query(Logininfo).filter(Logininfo.username == username).first()
     print("user :{}".format(user))
     if user is None or user==0  :
-        return templates.TemplateResponse("404.html", {"request": request})
+        return templates.TemplateResponse("404.html", {"request": request},status_code=status.HTTP_404_NOT_FOUND)
         exit
     elif user is not None and user.password != password:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect password")
