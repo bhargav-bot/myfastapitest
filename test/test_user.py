@@ -32,6 +32,7 @@ def get_db_test():
 
 @pytest.fixture 
 def session():
+    print("my session module is runnning")
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
     db = test_sessionlocal()
