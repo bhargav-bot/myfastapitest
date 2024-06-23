@@ -84,11 +84,7 @@ def get_current_time():
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return {"current_time": current_time}
 
-@bhargav.get('/yesha/')
-def func1223(db:Session=Depends(get_db),d=Depends(check_token)):
-    e=db.query(model.User12).all()
-    print(e)
-    return {'list':e}
+
 
 @bhargav.get('/yesha/')
 def func1223(db:Session=Depends(get_db),d=Depends(check_token)):
@@ -100,7 +96,7 @@ def func1223(db:Session=Depends(get_db),d=Depends(check_token)):
 def func12232(db:Session=Depends(get_db)):
     e=db.query(model.User12).all()
 
-    return {'list':e}
+    return e
 
 @bhargav.post('/mypost',status_code=status.HTTP_201_CREATED)
 def dghth(var:PATEL,db:Session=Depends(get_db)):

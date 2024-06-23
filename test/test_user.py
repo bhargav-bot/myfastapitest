@@ -33,4 +33,8 @@ def test_login12():
     assert info.name == "ketan"
     assert info.age == 43
     assert info.id == 345365
-    
+
+def test_ifo():
+    response=client1.get("/getinfo")
+    print(response.json())
+    assert response.status_code == 200
