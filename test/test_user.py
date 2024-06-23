@@ -57,9 +57,25 @@ def client(session):
 bhargav.dependency_overrides[get_db]=get_db_test
 
 @pytest.fixture
-def client1():
+def session1():
+    print("my session module is runnning")
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
+    db = test_sessionlocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+@pytest.fixture
+def client1():
+    def get_db_test():
+            
+        try:              
+            yield session
+        finally:
+            session.close()
+    bhargav.dependency_overrides[get_db]=get_db_test
     yield TestClient(bhargav)
 
 
