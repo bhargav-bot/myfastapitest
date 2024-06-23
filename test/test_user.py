@@ -20,23 +20,36 @@ test_sessionlocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base.metadata.create_all(bind=engine)
 
-def get_db_test():
+
+
+
+
+
+@pytest.fixture 
+def session():
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
     db = test_sessionlocal()
     try:
         yield db
     finally:
-        db.close
-
-bhargav.dependency_overrides[get_db]=get_db_test
-
+        db.close()
+    
 
 
 @pytest.fixture
-def client():
-    Base.metadata.drop_all(bind=engine)
-    Base.metadata.create_all(bind=engine)
-    yield TestClient(bhargav12)
+def client(session):
+    def get_db_test():
+            
+        try:
+                
+            yield session
+        finally:
+            session.close()
 
+    yield TestClient(bhargav12)
+    
+bhargav.dependency_overrides[get_db]=get_db_test
 
 @pytest.fixture
 def client1():
