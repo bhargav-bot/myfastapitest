@@ -30,7 +30,7 @@ def get_db_test():
 
 
 
-@pytest.fixture 
+@pytest.fixture(scope="function")
 def session():
     print("my session module is runnning")
     Base.metadata.drop_all(bind=engine)
@@ -43,7 +43,7 @@ def session():
     
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def client(session):
     def get_db_test():
             
@@ -57,7 +57,7 @@ def client(session):
 bhargav.dependency_overrides[get_db]=get_db_test
 
 
-@pytest.fixture
+@pytest.fixture(scope="function")
 def client1(session):
     def get_db_test():
             
