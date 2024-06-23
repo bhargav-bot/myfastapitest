@@ -42,7 +42,7 @@ def show_login_form(request: Request):
 @bhargav.post("/login")
 def login(request: Request, username: int = Form(...), password: str = Form(...), db: Session = Depends(get_db)):
     user = db.query(Logininfo).filter(Logininfo.username == username).first()
-    print("user":user)
+    print("user"+user)
     if user is None or user==0  :
         return templates.TemplateResponse("404.html", {"request": request})
     elif user is not None and user.password != password:
