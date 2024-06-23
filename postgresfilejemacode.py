@@ -24,7 +24,7 @@ from config import Settings
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-
+# aa vastu me change kari che 
 while True:
     try:
         conn=psycopg2.connect(host='localhost',database=Settings.DATABASE_NAME,user=Settings.DATABASE_USERNAME,password=Settings.DATABASE_PASSWORD,port=5432,cursor_factory=RealDictCursor)
@@ -40,7 +40,7 @@ while True:
         continue
 
 bhargav12=FastAPI()
-@bhargav12.get('/get12')
+@bhargav12.get('/get12/')
 def func1234():
     return "hello world"
 @bhargav12.get('/')

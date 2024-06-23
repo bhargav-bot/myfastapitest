@@ -5,10 +5,48 @@ from schemas import BHARGAV,BHARGAV12
 import requests
 import json
 import pytest
+from sqlalchemy import create_engine
+from config import Settings
+from sqlalchemy.orm import sessionmaker
+from database import get_db,Base
+from sqlalchemy.ext.declarative import declarative_base
 
-client = TestClient(bhargav12)
-client1=TestClient(bhargav)
-def test_root():
+
+
+SQL_ALCHEMY_DATABASE_URL = f'postgresql://{Settings.DATABASE_USERNAME}:{Settings.DATABASE_PASSWORD}@localhost:{Settings.database_port1}/test'
+print(SQL_ALCHEMY_DATABASE_URL)
+engine = create_engine(SQL_ALCHEMY_DATABASE_URL)
+test_sessionlocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+Base.metadata.create_all(bind=engine)
+
+def get_db_test():
+    db = test_sessionlocal()
+    try:
+        yield db
+    finally:
+        db.close
+
+bhargav.dependency_overrides[get_db]=get_db_test
+
+
+
+@pytest.fixture
+
+def client():
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
+    yield TestClient(bhargav12)
+
+
+@pytest.fixture
+def client1():
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
+    yield TestClient(bhargav)
+
+
+def test_root(client):
     response=client.get("/get12")
     print(response.json())
     assert response.status_code == 200
@@ -26,7 +64,7 @@ def test_signup():
 
     assert response.status_code ==201
 '''
-def test_login12():
+def test_login12(client1):
     response=client1.post("/login12", json={"name":"ketan", "age":43,"id":345365})
     
     info = BHARGAV12(**response.json())
@@ -35,12 +73,13 @@ def test_login12():
     assert info.age == 43
     assert info.id == 345365
 
-def test_ifo():
+def test_ifo(client1):
     response=client1.get("/getinfo")
     print(response.json())
     assert response.status_code == 200
-
+'''
 def test_heroku():
     url='https://bhargav-api-6b3bcd214c72.herokuapp.com/getinfo/'
     response=requests.get(url)
     print(response.json())
+    '''
