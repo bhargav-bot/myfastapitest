@@ -32,7 +32,6 @@ bhargav.dependency_overrides[get_db]=get_db_test
 
 
 @pytest.fixture
-
 def client():
     Base.metadata.drop_all(bind=engine)
     Base.metadata.create_all(bind=engine)
