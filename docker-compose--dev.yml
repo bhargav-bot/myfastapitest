@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: newapi
+    depends_on:
+      - postgres
+    ports:
+      - "8002:8008"
+    volumes:
+      - .:/app
+    command: ["uvicorn", "postgresfilejemacode:bhargav12", "--host", "0.0.0.0", "--port", "8008", "--reload"]
+    environment:
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PASSWORD=YESHA1496
+      - DATABASE_NAME=postgres
+      - DATABASE_USERNAME=bhargav
+      - ALGORITHM=HS256
+      - SECRET_KEY=09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      - ACCESS_TOKEN_EXPIRE_MINUTES=30
+      - DATABASE_PORT=5432
+
+  postgres:
+    image: postgres
+    container_name: bhargavnufolder-postgres
+    environment:
+      - POSTGRES_PASSWORD=YESHA1496
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=bhargav
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
+
+networks:
+  bhargavnufolder_network:
+    driver: bridge
