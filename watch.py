@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     try:
         while True:
-            time.sleep(1)
+            time.sleep(20)
     except KeyboardInterrupt:
         observer.stop()
 
