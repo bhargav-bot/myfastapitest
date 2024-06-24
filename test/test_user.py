@@ -21,28 +21,51 @@ test_sessionlocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base.metadata.create_all(bind=engine)
 
 def get_db_test():
+    try:
+        db = test_sessionlocal()
+        yield db
+    finally:
+        db.close()  
+
+
+
+
+@pytest.fixture(scope="module")
+def session():
+    print("my session module is runnning")
+    Base.metadata.drop_all(bind=engine)
+    Base.metadata.create_all(bind=engine)
     db = test_sessionlocal()
     try:
         yield db
     finally:
-        db.close
+        db.close()
+    
+
+
+@pytest.fixture(scope="module")
+def client(session):
+    def get_db_test():
+            
+        try:              
+            yield session
+        finally:
+            session.close()
+    bhargav.dependency_overrides[get_db]=get_db_test
+    yield TestClient(bhargav12)
 
 bhargav.dependency_overrides[get_db]=get_db_test
 
 
-
-@pytest.fixture
-
-def client():
-    Base.metadata.drop_all(bind=engine)
-    Base.metadata.create_all(bind=engine)
-    yield TestClient(bhargav12)
-
-
-@pytest.fixture
-def client1():
-    Base.metadata.drop_all(bind=engine)
-    Base.metadata.create_all(bind=engine)
+@pytest.fixture(scope="module")
+def client1(session):
+    def get_db_test():
+            
+        try:              
+            yield session
+        finally:
+            session.close()
+    bhargav.dependency_overrides[get_db]=get_db_test
     yield TestClient(bhargav)
 
 
@@ -51,19 +74,22 @@ def test_root(client):
     print(response.json())
     assert response.status_code == 200
 
-'''
 
-def test_login():
-    response=client1.post("/login",data={"username":543,"password":"1234"})
+def test_signup(client1):
+    response=client1.post("/signup", data={"username":54454323, "password":"1234"})
 
+    assert response.status_code ==200
+
+def test_signup1(client1):
+    response=client1.post("/signup", data={"username":544454323, "password":"1234"})
+
+    assert response.status_code ==200
+def test_login(client1):
+    response=client1.post("/login/",data={"username":5440323,"password":"1234egheytrg34"})
     assert response.status_code == 200
 
 
-def test_signup():
-    response=client1.post("/signup", data={"username":5443823, "password":"1234"})
 
-    assert response.status_code ==201
-'''
 def test_login12(client1):
     response=client1.post("/login12", json={"name":"ketan", "age":43,"id":345365})
     
