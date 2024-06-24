@@ -145,7 +145,7 @@ def func2(age:int):
         my_list.pop(d)
         print(my_list)
     else:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail='user not found ')
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail='user not found 12')
     return {'list':my_list}
 '''
 
