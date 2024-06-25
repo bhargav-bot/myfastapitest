@@ -40,3 +40,14 @@ def test_heroku():
     response=requests.get(url)
     print(response.json())
     '''
+
+def test_authtoken(client1,):
+    response=client1.get("/authtoken")
+    print(response.json())
+    assert response.status_code == 200
+'''
+def test_root(client):
+    response=client.get("/getinfo")
+    print(response.json())
+    assert response.status_code == 200
+'''
