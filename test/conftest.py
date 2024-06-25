@@ -76,8 +76,8 @@ def client1(session):
     yield TestClient(bhargav)
 
 @pytest.fixture
-def token1(client1,test_user):
-    user_data = {"name": "Bhargav", "age": 22 ,"id":444}
-    response=client1.post("/login12", json=user_data)
+def gettoken(client1,test_user):
+    user_data = {"name": "Bharagv", "age": 22,"id":4422}
+    response=client1.post("/login", data=user_data)
     assert response.status_code == 200
     return response.json()["access_token"]
