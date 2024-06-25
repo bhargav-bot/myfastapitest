@@ -46,7 +46,7 @@ def test_authtoken(client1,gettoken):
     headers={
             "Authorization": f"Bearer {gettoken}"
         }
-    response=client1.get("/authtoken", headers=headers)
+    response=client1.get('/authlog', headers=headers)
     assert response.status_code == 200
 '''
 def test_root(client):
