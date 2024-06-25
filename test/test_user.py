@@ -42,11 +42,11 @@ def test_heroku():
     '''
 
 def test_authtoken(client1,token):
-    response=client1.get("/authtoken")
+    
     headers={
             "Authorization": f"Bearer {token}"
         }
-    
+    response=client1.get("/authtoken", headers=headers)
     assert response.status_code == 200
 '''
 def test_root(client):
