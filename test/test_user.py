@@ -32,26 +32,10 @@ def test_user(client1):
     user_data = {"username": 1908, "password": "giyanhaiaap"}
     response=client1.post("/signup", data=user_data)
     assert response.status_code == 200
-    print(response.json())
     return response.json()
 
 
-'''
-@pytest.fixture()
-def client1(session):
-    def get_db_test():
 
-        try:
-            yield session
-        finally:
-            session.close()
-    bhargav.dependency_overrides[get_db]=get_db_test
-    yield TestClient(bhargav)
-
-
-@pytest.fixture()
-def client(session):
-    def get_db_test():
 @pytest.fixture()
 def session():
     print("my session module is runnning")
