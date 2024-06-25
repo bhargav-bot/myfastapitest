@@ -32,8 +32,7 @@ def test_user(client1):
     user_data = {"username": 1908, "password": "giyanhaiaap"}
     response=client1.post("/signup", data=user_data)
     assert response.status_code == 200
-    var= BHARGAV(**response.json())
-
+    var= response.json()
     return var
 
 
@@ -93,9 +92,8 @@ def test_signup1(client1):
 
     assert response.status_code ==200
     '''
-from fastapi import Depends
-def test_login(client1,d=Depends(test_user)):
-    response=client1.post("/login/",data={"username":,"password":"giyanhaiaap"})
+def test_login(client1,test_user):
+    response=client1.post("/login/",data={"username":test_user.,"password":"giyanhaiaap"})
     assert response.status_code == 200
 
 
