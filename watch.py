@@ -28,14 +28,22 @@ def pull_changes_via_ssh():
     try:
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh_client.connect('159.89.42.243', username='Yesha', password='Yesha@1496')
+        ssh_client.connect(hostname='159.89.42.243',port=22, username='Yesha', password='Yesha@1496')
         print("SSH connection established successfully")
-        ssh_client.exec_command('cd /home/Yesha/myfastapitest && /usr/bin/git pull origin main')
+        command='cd /home/Yesha/myfastapitest && /usr/bin/git pull origin main'
+        stdin, stdout, stderr = ssh_client.exec_command(command)
+        output = stdout.read().decode('utf-8')
+        error = stderr.read().decode('utf-8')
         logging.info('Changes pulled from GitHub to server successfully')
-    except Exception as e:
-        logging.error(f'Error executing SSH command: {str(e)}')
-    finally:
+        print(f"Command: {command}")
+        if output:
+            print(f"Output:\n{output}")
+        if error:
+            print(f"Error:\n{error}")
         ssh_client.close()
+    except Exception as e:
+        print(f"Error: {e}")
+
 
 # Define event handler class
 class MyHandler(FileSystemEventHandler):
