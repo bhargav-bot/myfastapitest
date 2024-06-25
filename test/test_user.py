@@ -32,7 +32,7 @@ def test_user(client1):
     user_data = {"username": 1908, "password": "giyanhaiaap"}
     response=client1.post("/signup", data=user_data)
     assert response.status_code == 200
-    return response.json()
+    return response
 
 
 
