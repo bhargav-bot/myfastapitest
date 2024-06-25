@@ -15,20 +15,23 @@ try:
     # Connect to the server
     ssh_client.connect(hostname=host, port=port, username=username, password=password)
 
-    # Example command to execute on the server
-    command =[
-        'cd /home/Yesha/myfastapitest && git pull origin main',
-        'ls -l /home/Yesha/myfastapitest'
-    ]   # Replace with your desired command
+    # Execute commands sequentially
+    commands = [
+        'cd /home/Yesha/myfastapitest',  # Change directory to your project directory
+        'git pull origin main'  # Pull changes from the main branch of the remote repository
+    ]
 
-    # Execute the command
-    stdin, stdout, stderr = ssh_client.exec_command(command)
-
-    # Read the output from the command
-    output = stdout.read().decode('utf-8')
-
-    # Print the output
-    print(f"Command output:\n{output}")
+    for command in commands:
+        stdin, stdout, stderr = ssh_client.exec_command(command)
+        output = stdout.read().decode('utf-8')
+        error = stderr.read().decode('utf-8')
+        
+        # Print command output
+        print(f"Command: {command}")
+        if output:
+            print(f"Output:\n{output}")
+        if error:
+            print(f"Error:\n{error}")
 
     # Close the SSH connection
     ssh_client.close()
