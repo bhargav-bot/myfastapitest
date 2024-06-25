@@ -14,19 +14,23 @@ try:
     # Connect to the server
     ssh_client.connect(hostname=host, port=port, username=username, password=password)
 
-    # Execute git pull command
-    command = 'cd /home/Yesha/myfastapitest && /usr/bin/git pull origin main'
+    # Execute commands sequentially
+    commands = [
+        'cd /home/Yesha/myfastapitest',  # Change directory to your Git repository
+        '/usr/bin/git pull origin main'  # Pull changes from the main branch of the remote repository
+    ]
 
-    stdin, stdout, stderr = ssh_client.exec_command(command)
-    output = stdout.read().decode('utf-8')
-    error = stderr.read().decode('utf-8')
-    
-    # Print command output
-    print(f"Command: {command}")
-    if output:
-        print(f"Output:\n{output}")
-    if error:
-        print(f"Error:\n{error}")
+    for command in commands:
+        stdin, stdout, stderr = ssh_client.exec_command(command)
+        output = stdout.read().decode('utf-8')
+        error = stderr.read().decode('utf-8')
+        
+        # Print command output
+        print(f"Command: {command}")
+        if output:
+            print(f"Output:\n{output}")
+        if error:
+            print(f"Error:\n{error}")
 
     # Close the SSH connection
     ssh_client.close()
