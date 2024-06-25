@@ -75,3 +75,9 @@ def client1(session):
     bhargav.dependency_overrides[get_db]=get_db_test
     yield TestClient(bhargav)
 
+@pytest.fixture
+def token1(client1,test_user):
+    user_data = {"name": "Bhargav", "age": 22 ,"id":444}
+    response=client1.post("/login12", json=user_data)
+    assert response.status_code == 200
+    return response.json()["access_token"]
