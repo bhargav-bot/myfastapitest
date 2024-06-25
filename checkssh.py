@@ -18,6 +18,7 @@ try:
     # Example command to execute on the server
     command =[
         'cd /home/Yesha/myfastapitest && git pull origin main'
+        
     ]   # Replace with your desired command
 
     # Execute the command
