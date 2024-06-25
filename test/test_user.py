@@ -28,8 +28,10 @@ def get_db_test():
         db.close()  
 
 @pytest.fixture
-def test_user():
+def test_user(client1):
     user_data = {"username": 1908, "password": "giyanhaiaap"}
+    response=client1.post("/signup", json=user_data)
+    
 @pytest.fixture(scope="module")
 def session():
     print("my session module is runnning")
