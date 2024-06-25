@@ -93,8 +93,9 @@ def test_signup1(client1):
 
     assert response.status_code ==200
     '''
-def test_login(client1,test_user):
-    response=client1.post("/login/",data={"username":1908,"password":"giyanhaiaap"})
+from fastapi import Depends
+def test_login(client1,d=Depends(test_user)):
+    response=client1.post("/login/",data={"username":,"password":"giyanhaiaap"})
     assert response.status_code == 200
 
 
