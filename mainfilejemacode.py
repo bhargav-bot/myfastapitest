@@ -85,6 +85,10 @@ def get_current_time():
     current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return {"current_time": current_time}
 
+@bhargav.get('/authlog')
+def func232235(db:Session=Depends(get_db), d=Depends(check_token)):
+    e=db.query(model.Logininfo).all()
+    return e
 
 
 @bhargav.get('/yesha/')
