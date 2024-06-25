@@ -74,7 +74,7 @@ def fergerf(id:int,db:Session=Depends(get_db)):
     db.commit()
 
 @bhargav.post('/login12/')
-def func2324325(var:dict,d=Depends(check_token)):
+def func2324325(var:dict):
     token=genratetoken(var)
     var12=BHARGAV(**var)
     finalvar=BHARGAV12(name=var12.name,age=var12.age,token=token,id=var12.id)
