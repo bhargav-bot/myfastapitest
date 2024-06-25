@@ -27,9 +27,9 @@ def get_db_test():
     finally:
         db.close()  
 
-
-
-
+@pytest.fixture
+def test_user():
+    user_data = {"username": 1908, "password": "giyanhaiaap"}
 @pytest.fixture(scope="module")
 def session():
     print("my session module is runnning")
