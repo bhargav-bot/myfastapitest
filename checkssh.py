@@ -16,7 +16,9 @@ try:
     ssh_client.connect(hostname=host, port=port, username=username, password=password)
 
     # Example command to execute on the server
-    command = 'ls -l /home/Yesha/myfastapitest'  # Replace with your desired command
+    command =[
+        'cd /home/Yesha/myfastapitest && git pull origin main'
+    ]   # Replace with your desired command
 
     # Execute the command
     stdin, stdout, stderr = ssh_client.exec_command(command)
