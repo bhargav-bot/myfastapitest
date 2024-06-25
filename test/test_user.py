@@ -93,7 +93,7 @@ def test_signup1(client1):
     assert response.status_code ==200
     '''
 def test_login(client1,test_user):
-    response=client1.post("/login/",data={"username":test_user.,"password":"giyanhaiaap"})
+    response=client1.post("/login/",data={"username":test_user['username'],"password":test_user['password']})
     assert response.status_code == 200
 
 
