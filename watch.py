@@ -29,7 +29,7 @@ def pull_changes_via_ssh():
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         ssh_client.connect(hostname='159.89.42.243',port=22, username='Yesha', password='Yesha@1496')
-        print("SSH connection established successfully")
+        print("SSH connection established gksuccessfully")
         command='cd /home/Yesha/myfastapitest && /usr/bin/git pull origin main'
         stdin, stdout, stderr = ssh_client.exec_command(command)
         output = stdout.read().decode('utf-8')
