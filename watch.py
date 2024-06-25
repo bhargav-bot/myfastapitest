@@ -48,7 +48,7 @@ class MyHandler(FileSystemEventHandler):
                     ssh_client = paramiko.SSHClient()
                     ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
                     ssh_client.connect('159.89.42.243', username='Yesha', password='Yesha@1496')
-                    ssh_client.exec_command('cd /home/Yesha/myfastapitest && git pull origin main')
+                    ssh_client.exec_command('cd /home/Yesha/myfastapitest && /usr/bin/git pull origin main')
                     logging.info('Changes pulled from GitHub to server successfully')
                 except Exception as e:
                     logging.error(f'Error executing SSH command: {str(e)}')
