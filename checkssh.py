@@ -6,7 +6,6 @@ port = 22  # Default SSH port is 22
 username = 'Yesha'  # Replace with your SSH username
 password = 'Yesha@1496'  # Replace with your SSH password
 
-# SSH session setup
 try:
     # Create SSH client
     ssh_client = paramiko.SSHClient()
@@ -17,8 +16,8 @@ try:
 
     # Execute commands sequentially
     commands = [
-        'cd /home/Yesha/myfastapitest',  # Change directory to your project directory
-        'git pull origin main'  # Pull changes from the main branch of the remote repository
+        'cd /home/Yesha/myfastapitest',  # Change directory to your Git repository
+        '/usr/bin/git pull origin main'  # Pull changes from the main branch of the remote repository
     ]
 
     for command in commands:
