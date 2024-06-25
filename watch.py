@@ -34,7 +34,7 @@ def pull_changes_via_ssh():
         stdin, stdout, stderr = ssh_client.exec_command(command)
         output = stdout.read().decode('utf-8')
         error = stderr.read().decode('utf-8')
-        logging.info('Changes pulled from GitHub to server successfully')
+        logging.info('Changes pulled from GitHub 1to server successfully')
         print(f"Command: {command}")
         if output:
             print(f"Output:\n{output}")
