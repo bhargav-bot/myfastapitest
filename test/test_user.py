@@ -43,7 +43,7 @@ def test_heroku():
 
 def test_authtoken(client1,):
     response=client1.get("/authtoken")
-    print(response.json())
+    
     assert response.status_code == 200
 '''
 def test_root(client):
