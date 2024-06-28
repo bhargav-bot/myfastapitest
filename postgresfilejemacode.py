@@ -25,7 +25,7 @@ from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-i=0
+
 while True:
    
     try:
@@ -40,8 +40,7 @@ while True:
         print(error)
         time.sleep(2)
         print("retrying")
-        if i==3:
-            exit
+
         continue
 
 bhargav12=FastAPI()
