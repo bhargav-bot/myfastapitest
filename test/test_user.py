@@ -58,3 +58,4 @@ def test_root(client):
     print(response.json())
     assert response.status_code == 200
 
+print('hello')
