@@ -27,7 +27,7 @@ from fastapi.templating import Jinja2Templates
 # aa vastu me change kari che 
 while True:
     try:
-        conn=psycopg2.connect(host='postgres',database='postgres',user='bhargav',password='YESHA1496',port=5432,cursor_factory=RealDictCursor)
+        conn=psycopg2.connect(host='localhost',database=Settings.DATABASE_NAME,user=Settings.DATABASE_USERNAME,password=Settings.DATABASE_PASSWORD,port=5432,cursor_factory=RealDictCursor)
         cursor=conn.cursor()
         print("database connection successful")
         print(Settings.DATABASE_HOSTNAME,Settings.DATABASE_NAME,Settings.DATABASE_USERNAME,Settings.DATABASE_PASSWORD)
