@@ -89,7 +89,7 @@ def get_current_time():
 def func232235(db:Session=Depends(get_db), d=Depends(check_token)):
     e=db.query(model.Logininfo).all()
     return e
-
+#hi
 
 @bhargav.get('/yesha/')
 def func1223(db:Session=Depends(get_db),d=Depends(check_token)):
