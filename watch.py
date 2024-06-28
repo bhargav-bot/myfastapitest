@@ -16,7 +16,7 @@ def run_git_commands(repo_dir):
     with open('/tmp/git_status.log', 'r') as f:
         status_output = f.read()
     if 'nothing to commit' not in status_output:
-        os.system('git add . && git commmit -m "Updated watch.py to automatically push changes to GitHub" && git push origin main')
+        os.system('git add . && git commit -m "Updated watch.py to automatically push changes to GitHub" && git push origin main')
         return True
     else:
         logging.info('No changes to commit')
