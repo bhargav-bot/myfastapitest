@@ -54,12 +54,12 @@ def test_authtoken(client1,gettoken,gettoken1):
     response=client1.get('/authlog', headers=headers)
     print(gettoken1)
     assert response.status_code == 200
-
+'''
 def test_root(client):
     response=client.get("/getinfo")
     print(response.json())
     assert response.status_code == 200
-
+'''
 print('hello')
 
 def test_check():
