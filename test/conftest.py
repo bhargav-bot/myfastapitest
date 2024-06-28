@@ -86,5 +86,5 @@ def gettoken(client1,test_user):
 @pytest.fixture
 def athoriziedclient(test_user):
     response=client1.post('/login12',json=test_user)
-
+    return
 
