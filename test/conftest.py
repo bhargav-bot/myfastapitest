@@ -11,7 +11,7 @@ from sqlalchemy.orm import sessionmaker
 from database import get_db,Base
 from sqlalchemy.ext.declarative import declarative_base
 
-
+'''
 
 SQL_ALCHEMY_DATABASE_URL = f'postgresql://bhargav:YESHA1496@postgres:{Settings.database_port1}/test'
 print(SQL_ALCHEMY_DATABASE_URL)
@@ -26,14 +26,14 @@ def get_db_test():
         yield db
     finally:
         db.close()  
-'''
+
 @pytest.fixture
 def test_user(client1):
     user_data = {"username": 1908, "password": "giyanhaiaap"}
     response=client1.post("/signup", data=user_data)
     assert response.status_code == 200
     return user_data
-'''
+
 
 
 @pytest.fixture()
@@ -61,7 +61,7 @@ def client(session):
     yield TestClient(bhargav12)
 
 bhargav.dependency_overrides[get_db]=get_db_test
-'''
+
 
 @pytest.fixture()
 def client1(session):
