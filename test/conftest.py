@@ -80,3 +80,11 @@ def gettoken(client1,test_user):
     response=client1.post("/login12", json=user_data)
     assert response.status_code == 200
     return response.json()["token"]
+
+
+
+@pytest.fixture
+def athoriziedclient(test_user):
+    response=client1.post('/login12',json=test_user)
+
+
