@@ -81,7 +81,7 @@ def gettoken(client1,test_user):
     print("response:"+str(response))
     assert response.status_code == 200
     return response.json()["token"]
-
+@pytest.fixture
 def gettoken1(client1,test_user):
     user_data = {"name": "Bharagv1", "age": 22,"id":44322}
     response=client1.post("/login12", json=user_data)
