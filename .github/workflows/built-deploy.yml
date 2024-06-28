@@ -36,4 +36,4 @@ jobs:
       - name: install pytest
         run: pip install pytest
       - name: running tests
-        run: pytest
+        run: pytest -v -s -x --disable-warnings
