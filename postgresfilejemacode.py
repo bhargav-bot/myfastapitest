@@ -35,7 +35,7 @@ while True:
         print(Settings.DATABASE_HOSTNAME,Settings.DATABASE_NAME,Settings.DATABASE_USERNAME,Settings.DATABASE_PASSWORD)
         break
     except Exception as error:
-        i=i+1
+       
         print("database connection failed12")
         print(error)
         time.sleep(2)
