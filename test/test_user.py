@@ -1,4 +1,6 @@
 from schemas import BHARGAV12
+import requests
+import pytest
 
 def test_root(client):
     response=client.get("/get12")
