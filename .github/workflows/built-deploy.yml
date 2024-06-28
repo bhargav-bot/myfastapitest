@@ -6,5 +6,9 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/Checkout@v2
+      - name: installing python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
 
 
