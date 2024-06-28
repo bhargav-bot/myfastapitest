@@ -41,7 +41,7 @@ def test_heroku():
     print(response.json())
     '''
 
-def test_authtoken(client1,gettoken):
+def test_authtoken(client1,gettoken,gettoken1):
     
     headers={
             "Authorization": f"Bearer {gettoken}"
