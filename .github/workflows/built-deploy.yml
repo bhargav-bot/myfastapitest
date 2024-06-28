@@ -1,6 +1,3 @@
 name: Build and deplay code
-on:
-  push:
-    branches: ['main']
-  pull_request:
-    branches: ['main']
+on: [push,pull_request]
+
