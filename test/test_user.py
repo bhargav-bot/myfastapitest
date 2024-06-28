@@ -5,7 +5,7 @@ import pytest
 def test_root(client):
     response=client.get("/get12")
     print(response.json())
-    assert response.status_code == 404
+    assert response.status_code == 200
 
 def test_signup(client1):
     response=client1.post("/signup", data={"username":54454323, "password":"1234"})
