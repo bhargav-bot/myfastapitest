@@ -1,5 +1,5 @@
 from schemas import BHARGAV12
-'''
+
 def test_root(client):
     response=client.get("/get12")
     print(response.json())
@@ -59,6 +59,6 @@ def test_root(client):
     assert response.status_code == 200
 
 print('hello')
-'''
+
 def test_check():
     assert 1==1
