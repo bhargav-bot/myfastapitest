@@ -24,9 +24,10 @@ from config import Settings
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
-# aa vastu me change kari che 
+
+i=0
 while True:
-    i=0
+   
     try:
         conn=psycopg2.connect(host='localhost',database=Settings.DATABASE_NAME,user=Settings.DATABASE_USERNAME,password=Settings.DATABASE_PASSWORD,port=5432,cursor_factory=RealDictCursor)
         cursor=conn.cursor()
