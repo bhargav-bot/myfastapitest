@@ -85,7 +85,7 @@ def gettoken(client1,test_user):
 def gettoken1(client1,test_user):
     user_data = {"name": "Bharagv1", "age": 22,"id":44322}
     response=client1.post("/login12", json=user_data)
-    print("response:"+str(response))
+    print("response:::"+str(response.json()))
     assert response.status_code == 200
     return response
 
