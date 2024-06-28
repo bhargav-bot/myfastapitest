@@ -5,3 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
+        uses: actions/Checkout@v2
+
+
