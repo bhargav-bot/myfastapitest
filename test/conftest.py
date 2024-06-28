@@ -93,7 +93,10 @@ def gettoken1(client1,test_user):
 
 @pytest.fixture
 def athoriziedclient(test_user):
-    response=client1.post('/login12',json=test_user)
+    user_data = {"username": 1908, "password": "giyanhaiaap"}
+    response=client1.post("/signup", data=user_data)
+    response1=client1.post('/login12',json=user_data)
     var=BHARGAV12(**response.json())
+    
     return
 
