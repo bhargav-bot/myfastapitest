@@ -26,6 +26,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 # aa vastu me change kari che 
 while True:
+    i=0
     try:
         conn=psycopg2.connect(host='localhost',database=Settings.DATABASE_NAME,user=Settings.DATABASE_USERNAME,password=Settings.DATABASE_PASSWORD,port=5432,cursor_factory=RealDictCursor)
         cursor=conn.cursor()
@@ -33,10 +34,13 @@ while True:
         print(Settings.DATABASE_HOSTNAME,Settings.DATABASE_NAME,Settings.DATABASE_USERNAME,Settings.DATABASE_PASSWORD)
         break
     except Exception as error:
+        i=i+1
         print("database connection failed12")
         print(error)
         time.sleep(2)
         print("retrying")
+        if i==3:
+            exit
         continue
 
 bhargav12=FastAPI()
