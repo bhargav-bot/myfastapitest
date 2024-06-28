@@ -60,3 +60,5 @@ def test_root(client):
 
 print('hello')
 '''
+def test_check()
+    assert 1==1
