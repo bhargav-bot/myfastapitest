@@ -14,6 +14,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 SQL_ALCHEMY_DATABASE_URL = f'postgresql://{Settings.DATABASE_USERNAME}:{Settings.DATABASE_PASSWORD}@localhost:{Settings.database_port1}/test'
+print('SQL_ALCHEMY_DATABASE_URL::')
 print(SQL_ALCHEMY_DATABASE_URL)
 engine = create_engine(SQL_ALCHEMY_DATABASE_URL)
 test_sessionlocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
