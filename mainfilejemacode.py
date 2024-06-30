@@ -177,7 +177,18 @@ def func1211(request: Request, username:str=Form(...),password:str=Form(...),db:
     else:
         return templates.TemplateResponse("welcomehome.html", {"request": request})
     
-    
+@bhargav.get('/signuphome',response_class=HTMLResponse)
+def func12123(request: Request):
+    return templates.TemplateResponse("signuphome.html", {"request": request})
+
+@bhargav.post('/signuphome', status_code=status.HTTP_201_CREATED)
+def func2324232(request: Request, username:str=Form(...), password:str=Form(...), db:Session=Depends(get_db)):
+    var=model.Logindatabase(username=username, password=password)
+    db.add(var)
+    db.commit()
+    db.refresh(var)
+    return templates.TemplateResponse("signupsuccesfulhome.html", {"request": request, 'username':username})
+
 
 
 
