@@ -20,7 +20,7 @@ class Logininfo(Base):
 
 class Logindatabase(Base):
     __tablename__='logindatabase'
-    username=Column(Integer, primary_key=True)
+    username=Column(String, primary_key=True)
     password=Column(String, nullable=False)
     email=Column(String, nullable=False)
 
