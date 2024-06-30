@@ -2,10 +2,27 @@
 <html>
 <head>
     <title>Signup Successful</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Optional background color */
+        }
+        .content {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h2>Signup Successful!</h2>
-    <p>Welcome, {{ username }}!</p>
-    <p>Click <a href="/home">here</a> to login.</p>
+    <div class="content">
+        <h2>Signup Successful!</h2>
+        <p>Welcome, {{ username }}!</p>
+        <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Success GIF">
+        <p>Click <a href="/home">here</a> to login.</p>
+    </div>
 </body>
 </html>
