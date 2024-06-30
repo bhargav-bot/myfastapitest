@@ -162,8 +162,21 @@ def func432():
     return RedirectResponse("https://www.utctime.net/utc-timestamp.net")
 
 
+@bhargav.get('/home',response_class=HTMLResponse)
+def func1232(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
 
 
+@bhargav.post('/home')
+def func1211(request: Request, username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
+    var=db.query(model.Logindatabase).filter(model.Logindatabase.username==username).first()
+    if var is None:
+        return templates.TemplateResponse("404.html", {"request": request}, status_code=status.HTTP_404_NOT_FOUND)
+    if var.password!=password:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect password")
+    else:
+        return templates.TemplateResponse("welcomehome.html", {"request": request})
+    
     
 
 
