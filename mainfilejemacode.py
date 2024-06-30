@@ -182,7 +182,7 @@ def func12123(request: Request):
     return templates.TemplateResponse("signuphome.html", {"request": request})
 
 @bhargav.post('/signuphome', status_code=status.HTTP_201_CREATED)
-def func2324232(request: Request, username:str=Form(...), password:str=Form(...), db:Session=Depends(get_db)):
+def func2324232(request: Request, username:str=Form(...), password:str=Form(...),email:str=Form(...), db:Session=Depends(get_db)):
     var=model.Logindatabase(username=username, password=password)
     db.add(var)
     db.commit()
