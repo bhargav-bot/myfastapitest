@@ -193,6 +193,9 @@ def func2324232(request: Request, username:str=Form(...), password:str=Form(...)
     db.refresh(var)
     return templates.TemplateResponse("signupsuccesfulhome.html", {"request": request, 'username':username})
 
+@bhargav.get('/contact',response_class=HTMLResponse)
+def func12321(request: Request):
+    return templates.TemplateResponse("contact.html", {"request": request})
 
 
 
