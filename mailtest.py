@@ -32,3 +32,33 @@ if response.status_code == 200:
     print("Email sent successfully!")
 else:
     print(f"Failed to send email. Status code: {response.status_code}")
+
+from mailersend import emails
+
+api_key = "API key here"
+
+mailer = emails.NewEmail(api_key)
+
+# define an empty dict to populate with mail values
+mail_body = {}
+
+mail_from = {
+    "email": "760041bp@gmail.com",  # Your email address
+}
+
+recipients = [
+    {
+        "email": "bhargavp19082002@gmail.com",  # Recipient's email address
+    }
+]
+
+
+mailer.set_mail_from(mail_from, mail_body)
+mailer.set_mail_to(recipients, mail_body)
+mailer.set_subject("Hello!", mail_body)
+mailer.set_html_content("This is the HTML content", mail_body)
+mailer.set_plaintext_content("This is the text content", mail_body)
+
+
+# using print() will also return status code and data
+mailer.send(mail_body)
