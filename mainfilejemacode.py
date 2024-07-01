@@ -198,6 +198,12 @@ def func12321(request: Request):
     return templates.TemplateResponse("contact.html", {"request": request})
 
 
+@bhargav.post('/contact')
+def func121212(request: Request, name:str=Form(...), email:str=Form(...), message:str=Form(...)):
+ 
+    return templates.TemplateResponse("contact.html", {"request": request})
+
+
 
 
     
