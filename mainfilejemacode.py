@@ -240,7 +240,7 @@ async def func121212(request: Request, name:str=Form(...), email:str=Form(...), 
     # Set email attributes
     mailer.set_mail_from(mail_from, mail_body)
     mailer.set_mail_to(recipients, mail_body)
-    mailer.set_subject(f"New Contact Form Submission:{current_time1}", mail_body)
+    mailer.set_subject("New Contact Form Submission:{}".format(current_time1), mail_body)
     mailer.set_html_content(f"<p>Name: {name}</p><p>Email: {email}</p><p>Message: {message}</p>", mail_body)
     #mailer.set_plaintext_content(f"Name: {name}\nEmail: {email}\nMessage: {message}", mail_body)
 
