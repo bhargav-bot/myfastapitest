@@ -178,7 +178,7 @@ def func1211(request: Request, username:str=Form(...),password:str=Form(...),db:
     if var.password!=password:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect password")
     else:
-        return templates.TemplateResponse("welcomehome.html", {"request": request})
+        return templates.TemplateResponse("welcome.html", {"request": request})
     
 @bhargav.get('/signuphome',response_class=HTMLResponse)
 def func12123(request: Request):
