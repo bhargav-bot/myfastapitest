@@ -48,4 +48,10 @@ class Login123(BaseModel):
     class config:
         orm_mode=True
 
+class contact12(BaseModel):
+    name:str
+    email:str
+    message:str
+    class config:
+        orm_mode=True
 
