@@ -1,37 +1,42 @@
-import mailersend
 from mailersend import emails
 
+# Replace 'API key here' with your actual MailerSend API key
+api_key = "API key here"
 
+# Initialize the NewEmail client
+mailer = emails.NewEmail(api_key)
 
-mailer = mailersend(api_key='mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec')
+# Define email parameters directly
+mailer.set_mail_from({
+    "name": "Your Name",
+    "email": "your@domain.com",
+})
 
-# Compose your email details
-subject = "Subject"
-text = "Greetings from the team, you got this message through MailerSend."
-html = "<p>Greetings from the team, you got this message through MailerSend.</p>"
+mailer.set_mail_to([
+    {
+        "name": "Your Client",
+        "email": "your@client.com",
+    }
+])
 
-# Define your sender email address
-my_mail = "760041bp@gmail.coom"
+mailer.set_subject("Hello!")
 
-# Define your list of recipients
-subscriber_list = [
-   'bhargavp19082002@gmail.com'
-]
+mailer.set_html_content("This is the HTML content")
 
-# Create an Email instance
-email = emails(
-    from_email=my_mail,
-    to=subscriber_list,
-    subject=subject,
-    text=text,
-    html=html
-)
+mailer.set_plaintext_content("This is the text content")
+
+mailer.set_reply_to([
+    {
+        "name": "Name",
+        "email": "reply@domain.com",
+    }
+])
 
 # Send the email
-response = mailer.send(email)
+response = mailer.send()
 
 # Check the response
 if response.status_code == 200:
-    print("Email(s) sent successfully!")
+    print("Email sent successfully!")
 else:
-    print(f"Failed to send email(s). Status code: {response.status_code}")
+    print(f"Failed to send email. Status code: {response.status_code}")
