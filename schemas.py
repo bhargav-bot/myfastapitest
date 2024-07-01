@@ -42,8 +42,10 @@ class Logininfo(BaseModel):
 
 
 class LoginDatabase(BaseModel):
-    username:str=Field(default=None)
-    email:str=Field(default=None)
-    password:str=Field(default=None)
+    username:str
+    email:str
+    password:str
+    class config:
+        orm_mode=True
 
 
