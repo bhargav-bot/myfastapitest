@@ -55,3 +55,12 @@ class contact12(BaseModel):
     class config:
         orm_mode=True
 
+class ConnectionConfig(BaseModel):
+    MAIL_USERNAME: str
+    MAIL_PASSWORD: str
+    MAIL_FROM: Optional[str] = None
+    MAIL_PORT: Optional[int] = None
+    MAIL_SERVER: Optional[str] = None
+    MAIL_TLS: Optional[bool] = True  # Example: Set to True for TLS
+    MAIL_SSL: Optional[bool] = False  # Example: Set to True for SSL
+    USE_CREDENTIALS: bool = True
