@@ -215,7 +215,7 @@ def func2324232(request: Request, username:str=Form(...), password:str=Form(...)
 @bhargav.get('/contact',response_class=HTMLResponse)
 def func12321(request: Request):
     return templates.TemplateResponse("contact.html", {"request": request})
-
+current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 @bhargav.post('/contact')
 async def func121212(request: Request, name:str=Form(...), email:str=Form(...), message:str=Form(...),db:Session=Depends(get_db)):
@@ -240,7 +240,7 @@ async def func121212(request: Request, name:str=Form(...), email:str=Form(...), 
     # Set email attributes
     mailer.set_mail_from(mail_from, mail_body)
     mailer.set_mail_to(recipients, mail_body)
-    mailer.set_subject("New Contact Form Submission", mail_body)
+    mailer.set_subject("New Contact Form Submission:{current_time}", mail_body)
     mailer.set_html_content(f"<p>Name: {name}</p><p>Email: {email}</p><p>Message: {message}</p>", mail_body)
     #mailer.set_plaintext_content(f"Name: {name}\nEmail: {email}\nMessage: {message}", mail_body)
 
