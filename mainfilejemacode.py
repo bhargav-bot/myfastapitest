@@ -173,7 +173,7 @@ def func1211(request: Request, username:str=Form(...),password:str=Form(...),db:
     print(var.email)
     print(var.password)
     print(type(var.username))
-    if var is None:
+    if var is None or var==0:
         return templates.TemplateResponse("404.html", {"request": request}, status_code=status.HTTP_404_NOT_FOUND)
     if var.password!=password:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect password")
