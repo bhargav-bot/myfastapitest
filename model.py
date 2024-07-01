@@ -28,4 +28,4 @@ class contact(Base):
     __tablename__='contact'
     name=Column(String, nullable=False)
     email=Column(String, nullable=False)
-    message=Column(String, nullable=False)
+    message=Column(String, nullable=False, primary_key=True)
