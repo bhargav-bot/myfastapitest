@@ -224,33 +224,6 @@ async def func121212(request: Request, name:str=Form(...), email:str=Form(...), 
     db.add(var)
     db.commit()
     db.refresh(var)
-    message = MessageSchema(
-        subject="Test Email",
-        recipients=["recipient@example.com"],  # List of recipients
-        body="This is a test email",
-        subtype="html"
-    )
-
-
-    fm=FastMail(conf)
-    await fm.send_message(message)
-
-@bhargav.get('/getcontact')
-def func123212(db:Session=Depends(get_db)):
-    e=db.query(model.contact).all()
-    return e
-
-
-
-@app.post('/contact')
-async def func121212(request: Request, name: str = Form(...), email: str = Form(...), message: str = Form(...), db: Session = Depends(get_db)):
-    # Save contact form data to the database
-    new_contact = Contact(name=name, email=email, message=message)
-    db.add(new_contact)
-    db.commit()
-    db.refresh(new_contact)
-
-    # Define email parameters
     mail_body = {}
     mail_from = {
         "email": "Bhargavpatel@trial-k68zxl28yymlj905.mlsender.net",
@@ -261,14 +234,12 @@ async def func121212(request: Request, name: str = Form(...), email: str = Form(
         }
     ]
 
-    # Set email attributes
     mailer.set_mail_from(mail_from, mail_body)
     mailer.set_mail_to(recipients, mail_body)
     mailer.set_subject("New Contact Form Submission", mail_body)
     mailer.set_html_content(f"<p>Name: {name}</p><p>Email: {email}</p><p>Message: {message}</p>", mail_body)
     mailer.set_plaintext_content(f"Name: {name}\nEmail: {email}\nMessage: {message}", mail_body)
 
-    # Send the email
     response = mailer.send(mail_body)
     if response.status_code == 200:
         print("Email sent successfully!")
@@ -278,7 +249,13 @@ async def func121212(request: Request, name: str = Form(...), email: str = Form(
 
     return {"message": "Contact form submitted successfully"}
 
-    
+
+@bhargav.get('/getcontact')
+def func123212(db:Session=Depends(get_db)):
+    e=db.query(model.contact).all()
+    return e
+
+
 
 
     
