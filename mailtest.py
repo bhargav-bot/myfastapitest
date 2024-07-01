@@ -1,7 +1,7 @@
 import mailersend
-from mailersend import MailerSend, Email, Recipient
+from mailersend import Email
 
-mailersend = MailerSend(api_key='mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec')
+mailersend = mailersend(api_key='mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec')
 
 def send_email():
     email = Email(
