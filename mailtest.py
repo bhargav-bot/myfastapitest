@@ -6,11 +6,13 @@ api_key = "mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec
 # Initialize the NewEmail client
 mailer = emails.NewEmail(api_key)
 
+message = "hello i amn trsfdggsf"
+
 # Define email parameters directly
 mailer.set_mail_from({
     "name": "Your Name",
     "email": "760041bp@gmail.com",
-    "message":"hello i amn trsfdggsf"
+
 })
 
 mailer.set_mail_to([
