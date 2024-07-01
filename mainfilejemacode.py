@@ -229,7 +229,7 @@ async def func121212(request: Request, name:str=Form(...), email:str=Form(...), 
     # Define email parameters
     mail_body = {}
     mail_from = {
-        "email": "Bhargavpatel@trial-k68zxl28yymlj905.mlsender.net",
+        "email": "Bhargavpatel@patels.online",
     }
     recipients = [
         {
