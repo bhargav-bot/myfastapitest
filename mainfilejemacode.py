@@ -203,6 +203,8 @@ def func121212(request: Request, name:str=Form(...), email:str=Form(...), messag
 
     var=model.contact(name=name, email=email, message=message)
     db.add(var)
+    db.commit()
+    db.refresh(var)
  
     return templates.TemplateResponse("contact.html", {"request": request})
 
