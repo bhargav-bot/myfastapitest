@@ -18,7 +18,7 @@ class Logininfo(Base):
     username=Column(Integer,primary_key=True)
     password=Column(String,nullable=False)
 
-class Logindatabase(Base):
+class LoginDatabase(Base):
     __tablename__='logindatabase'
     username=Column(String, primary_key=True)
     password=Column(String, nullable=False)
