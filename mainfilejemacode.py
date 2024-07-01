@@ -186,7 +186,7 @@ def func12123(request: Request):
 
 @bhargav.post('/signuphome', status_code=status.HTTP_201_CREATED)
 def func2324232(request: Request, username:str=Form(...), password:str=Form(...),email:str=Form(...), db:Session=Depends(get_db)):
-    var=Login123(username=username, password=password,email=email)
+    var=model.LoginDatabase(username=username, password=password,email=email)
     print(type(var.username))
     db.add(var)
     db.commit()
