@@ -205,8 +205,7 @@ def func121212(request: Request, name:str=Form(...), email:str=Form(...), messag
     db.add(var)
     db.commit()
     db.refresh(var)
- 
-    return templates.TemplateResponse("contact.html", {"request": request})
+    return "thank you for your message we will contact you shortly"
 
 
 
