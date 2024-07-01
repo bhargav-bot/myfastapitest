@@ -172,7 +172,7 @@ def func1211(request: Request, username:str=Form(...),password:str=Form(...),db:
     var=db.query(model.Logindatabase).filter(model.Logindatabase.username==username).first()
     print(var.email)
     print(var.password)
-    print(var.username)
+    print(type(var.username))
     if var is None:
         return templates.TemplateResponse("404.html", {"request": request}, status_code=status.HTTP_404_NOT_FOUND)
     if var.password!=password:
@@ -187,6 +187,7 @@ def func12123(request: Request):
 @bhargav.post('/signuphome', status_code=status.HTTP_201_CREATED)
 def func2324232(request: Request, username:str=Form(...), password:str=Form(...),email:str=Form(...), db:Session=Depends(get_db)):
     var=model.Logindatabase(username=username, password=password,email=email)
+    print(type(var.username))
     db.add(var)
     db.commit()
     db.refresh(var)
