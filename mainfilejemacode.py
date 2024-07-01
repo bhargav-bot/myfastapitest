@@ -222,12 +222,13 @@ async def func121212(request: Request, name:str=Form(...), email:str=Form(...), 
     db.add(var)
     db.commit()
     db.refresh(var)
-
     message = MessageSchema(
-        subject={"Thank you for your message"},
-        recipients=["760041bp@gmail.com"],  # Replace with your email address
-        body=f"Name: {var.name}\nEmail: {var.email}\n\nMessage:\n{var.message}"
-    )
+    subject="Thank you for your message",  # Ensure subject is a string
+    recipients=["760041bp@gmail.com"],    # Replace with your actual recipients
+    body=f"Name: {var.name}\nEmail: {var.email}\n\nMessage:\n{var.message}",
+    subtype="email"  # Add the subtype field with an appropriate value
+)
+
     fm=FastMail(conf)
     await fm.send_message(message)
     return "thank you for your message we will contact you shortly"
