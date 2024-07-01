@@ -43,9 +43,8 @@ conf=ConnectionConfig(
     MAIL_FROM= "Bhargavp19082002@gmail.com",
     MAIL_PORT= 587,
     MAIL_SERVER= "smtp.gmail.com",
-    MAIL_SSL_TLS= False,
-    MAIL_STARTTLS=True,
-    USE_CREDENTIALS= False
+    MAIL_TLS=True,
+    MAIL_SSL=False
    
 )
 
