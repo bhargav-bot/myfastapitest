@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from time import time
-from schemas import BHARGAV,PATEL,Logincredentials,Logininfo,BHARGAV12,Login123,contact12
+from schemas import BHARGAV,PATEL,Logincredentials,Logininfo,BHARGAV12,Login123,contact12,ConnectionConfig
 from fastapi.middleware.cors import CORSMiddleware
 from authenticationfile import genratetoken
 from authenticationfile import check_token
@@ -34,6 +34,7 @@ bhargav=FastAPI()
 Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")
+
 
 
 
