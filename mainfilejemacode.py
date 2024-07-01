@@ -199,7 +199,10 @@ def func12321(request: Request):
 
 
 @bhargav.post('/contact')
-def func121212(request: Request, name:str=Form(...), email:str=Form(...), message:str=Form(...)):
+def func121212(request: Request, name:str=Form(...), email:str=Form(...), message:str=Form(...),db:Session=Depends(get_db)):
+
+    var=model.contact(name=name, email=email, message=message)
+    db.add(var)
  
     return templates.TemplateResponse("contact.html", {"request": request})
 
