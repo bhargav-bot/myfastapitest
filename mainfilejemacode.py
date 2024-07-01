@@ -38,11 +38,11 @@ templates = Jinja2Templates(directory="templates")
 
 
 conf=ConnectionConfig(
-    MAIL_USERNAME= "Bhargavp19082002@gmail.com",
-    MAIL_PASSWORD= "6045 2569",
-    MAIL_FROM= "Bhargavp19082002@gmail.com",
-    MAIL_PORT= 587,
-    MAIL_SERVER= "smtp.gmail.com",
+    MAIL_USERNAME="bhargavp1219@yahoo.com",
+    MAIL_PASSWORD="Yesha@1496",
+    MAIL_FROM="bhargavp1219@yahoo.com",
+    MAIL_PORT=587,  # Yahoo SMTP port
+    MAIL_SERVER="smtp.mail.yahoo.com",
     MAIL_STARTTLS=True,
     MAIL_SSL_TLS=False
 )
