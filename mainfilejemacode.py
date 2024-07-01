@@ -270,7 +270,7 @@ async def func121212(request: Request, name: str = Form(...), email: str = Form(
     mailer.set_plaintext_content(f"Name: {name}\nEmail: {email}\nMessage: {message}", mail_body)
 
     # Send the email
-    mailer.send(mail_body)
+    print(mailer.send(mail_body))
     
     
 
