@@ -1,11 +1,11 @@
 from mailersend import MailerSend, Email, Recipient
 
-mailersend = MailerSend(api_key='your_api_key')
+mailersend = MailerSend(api_key='mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec')
 
 def send_email():
     email = Email(
-        from_email='your_email@example.com',
-        to=['recipient@example.com'],
+        from_email='bhargavp19082002@gmail.com',
+        to=['760041bp@gmail.com'],
         subject='Your Subject',
         text='Your plain text content',
         html='<p>Your HTML content</p>'
