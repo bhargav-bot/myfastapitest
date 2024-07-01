@@ -10,7 +10,7 @@ mailer = emails.NewEmail(api_key)
 mail_from = {
     "name": "Your Name",
     "email": "760041bp@gmail.com",
-    "message":"who let the dog out"
+    "message":"who let the dog out",
 }
 
 recipients = [
