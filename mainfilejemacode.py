@@ -17,6 +17,10 @@ from model import User12,Logininfo,contact
 import time,datetime
 from starlette.responses import RedirectResponse
 import model
+from fastapi.responses import HTMLResponse
+from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
+from pydantic import EmailStr
+
 
 
 #this is the change i am adding to my file to check if the change is execuated on my server 
