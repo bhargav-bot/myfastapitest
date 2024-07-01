@@ -47,7 +47,8 @@ conf=ConnectionConfig(
     MAIL_STARTTLS= True,
     MAIL_SSL_TLS= False,
     USE_CREDENTIALS= True,
-
+    MAIL_TLS=True,  # Enable TLS
+    MAIL_SSL=False,  # Disable SSL
 )
 
 @bhargav.get('/')
