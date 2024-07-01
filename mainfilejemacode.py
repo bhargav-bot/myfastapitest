@@ -13,7 +13,7 @@ from schemas import BHARGAV,PATEL,Logincredentials,Logininfo,BHARGAV12,LoginData
 from fastapi.middleware.cors import CORSMiddleware
 from authenticationfile import genratetoken
 from authenticationfile import check_token
-from model import User12,Logininfo,Logindatabase
+from model import User12,Logininfo
 import time,datetime
 from starlette.responses import RedirectResponse
 import model
