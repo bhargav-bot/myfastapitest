@@ -224,16 +224,28 @@ async def func121212(request: Request, name:str=Form(...), email:str=Form(...), 
     db.add(var)
     db.commit()
     db.refresh(var)
-    message = MessageSchema(
-        subject="Test Email",
-        recipients=["recipient@example.com"],  # List of recipients
-        body="This is a test email",
-        subtype="html"
-    )
 
 
-    fm=FastMail(conf)
-    await fm.send_message(message)
+    # Define email parameters
+    mail_body = {}
+    mail_from = {
+        "email": "Bhargavpatel@trial-k68zxl28yymlj905.mlsender.net",
+    }
+    recipients = [
+        {
+            "email": "bhargavp19082002@gmail.com",  # Replace with the actual recipient's email
+        }
+    ]
+
+    # Set email attributes
+    mailer.set_mail_from(mail_from, mail_body)
+    mailer.set_mail_to(recipients, mail_body)
+    mailer.set_subject("New Contact Form Submission", mail_body)
+    mailer.set_html_content(f"<p>Name: {name}</p><p>Email: {email}</p><p>Message: {message}</p>", mail_body)
+    mailer.set_plaintext_content(f"Name: {name}\nEmail: {email}\nMessage: {message}", mail_body)
+
+    mailer.send(mail_body)
+    print(mailer.send(mail_body))
 
 @bhargav.get('/getcontact')
 def func123212(db:Session=Depends(get_db)):
