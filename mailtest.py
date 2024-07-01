@@ -27,7 +27,7 @@ reply_to = [
 ]
 
 # Set email attributes
-mailer.set_mail_from(mail_from)
+mailer.set_mail_from(mail_from,message="hi")
 mailer.set_mail_to(recipients)
 mailer.set_subject("Hello!")
 mailer.set_html_content("<p>This is the HTML content</p>")
