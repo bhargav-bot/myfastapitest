@@ -17,7 +17,7 @@ import time,datetime
 from starlette.responses import RedirectResponse
 import model
 from fastapi.responses import HTMLResponse
-from fastapi_mail import FastMail, MessageSchema, ConnectionConfig
+
 from pydantic import EmailStr
 import mailersend
 from mailersend import emails
@@ -40,15 +40,6 @@ templates = Jinja2Templates(directory="templates")
 
 
 
-conf=ConnectionConfig(
-    MAIL_USERNAME="bhargavp1219@yahoo.com",
-    MAIL_PASSWORD="Yesha@1496",
-    MAIL_FROM="bhargavp1219@yahoo.com",
-    MAIL_PORT=587,  # Yahoo SMTP port
-    MAIL_SERVER="smtp.mail.yahoo.com",
-    MAIL_STARTTLS=True,
-    MAIL_SSL_TLS=False
-)
 
 @bhargav.get('/')
 def myfunc():
