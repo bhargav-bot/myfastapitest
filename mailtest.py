@@ -7,7 +7,7 @@ api_key = "mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec
 mailer = emails.NewEmail(api_key)
 
 # define an empty dict to populate with mail values
-mail_body = {"760041bp@gmail.com"}
+mail_body = {}
 
 mail_from = {
     "email": "760041bp@gmail.com",  # Your email address
