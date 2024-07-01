@@ -1,5 +1,5 @@
 import mailersend
-from mailersend import constants,emails
+from mailersend import emails
 
 from mailersend.activity import Activity
 
