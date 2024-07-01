@@ -232,6 +232,10 @@ async def func121212(request: Request, name:str=Form(...), email:str=Form(...), 
     fm=FastMail(conf)
     await fm.send_message(message)
 
+@bhargav.get('/getcontact')
+def func123212(db:Session=Depends(get_db)):
+    e=db.query(model.contact).all()
+    return e
 
 
 
