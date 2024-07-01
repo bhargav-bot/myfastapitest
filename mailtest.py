@@ -28,5 +28,4 @@ mailer.set_plaintext_content("This is the text content", mail_body)
 
 
 # using print() will also return status code and data
-d= mailer.send(mail_body)
-print(d)
+mailer.send(mail_body)
