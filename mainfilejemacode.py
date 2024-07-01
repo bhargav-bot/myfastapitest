@@ -221,6 +221,14 @@ def func121212(request: Request, name:str=Form(...), email:str=Form(...), messag
     db.add(var)
     db.commit()
     db.refresh(var)
+
+    message = MessageSchema(
+        subject="Thank you for your message",
+        recipients=["760041bp@gmail.com"],  # Replace with your email address
+        body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+    )
+    fm=FastMail(conf)
+    await fm.send_message(message)
     return "thank you for your message we will contact you shortly"
 
 
