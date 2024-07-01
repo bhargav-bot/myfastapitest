@@ -28,4 +28,10 @@ mailer.set_plaintext_content("This is the text content", mail_body)
 
 
 # using print() will also return status code and data
-mailer.send(mail_body)
+response = mailer.send()
+
+# Check the response
+if response.status_code == 200:
+    print("Email sent successfully!")
+else:
+    print(f"Failed to send email. Status code: {response.status_code}")
