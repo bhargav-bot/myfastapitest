@@ -1,7 +1,7 @@
 import mailersend
 from mailersend import emails
 
-from mailersend.activity import Activity
+
 
 mailer = mailersend(api_key='mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec')
 
