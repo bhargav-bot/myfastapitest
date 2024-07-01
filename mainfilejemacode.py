@@ -240,8 +240,7 @@ def func123212(db:Session=Depends(get_db)):
     e=db.query(model.contact).all()
     return e
 
-api_key = "mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec"
-mailer = emails.NewEmail(api_key)
+
 
 @app.post('/contact')
 async def func121212(request: Request, name: str = Form(...), email: str = Form(...), message: str = Form(...), db: Session = Depends(get_db)):
