@@ -23,7 +23,7 @@ import mailersend
 from mailersend import emails
 api_key = "mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec"
 mailer = emails.NewEmail(api_key)
-current_time1 = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+current_time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 #this is the change i am adding to my file to check if the change is execuated on my server 
 
