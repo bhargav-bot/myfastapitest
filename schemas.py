@@ -41,7 +41,7 @@ class Logininfo(BaseModel):
         orm_mode=True
 
 
-class LoginDatabase(BaseModel):
+class Login123(BaseModel):
     username:str
     email:str
     password:str
