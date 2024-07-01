@@ -226,7 +226,7 @@ async def func121212(request: Request, name:str=Form(...), email:str=Form(...), 
     subject="Thank you for your message",  # Ensure subject is a string
     recipients=["760041bp@gmail.com"],    # Replace with your actual recipients
     body=f"Name: {var.name}\nEmail: {var.email}\n\nMessage:\n{var.message}",
-    subtype="email"  # Add the subtype field with an appropriate value
+    subtype="plain"  # Add the subtype field with an appropriate value
 )
 
     fm=FastMail(conf)
