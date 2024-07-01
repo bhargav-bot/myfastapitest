@@ -7,7 +7,7 @@ api_key = "mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec
 mailer = emails.NewEmail(api_key)
 
 # define an empty dict to populate with mail values
-mail_body = {}
+mail_body = {"760041bp@gmail.com"}
 
 mail_from = {
     "email": "760041bp@gmail.com",  # Your email address
@@ -28,4 +28,4 @@ mailer.set_plaintext_content("This is the text content", mail_body)
 
 
 # using print() will also return status code and data
-mailer.send(mail_body)
+d= mailer.send(mail_body)
