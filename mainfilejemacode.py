@@ -9,11 +9,11 @@ from fastapi.templating import Jinja2Templates
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from time import time
-from schemas import BHARGAV,PATEL,Logincredentials,Logininfo,BHARGAV12,Login123
+from schemas import BHARGAV,PATEL,Logincredentials,Logininfo,BHARGAV12,Login123,contact12
 from fastapi.middleware.cors import CORSMiddleware
 from authenticationfile import genratetoken
 from authenticationfile import check_token
-from model import User12,Logininfo
+from model import User12,Logininfo,contact
 import time,datetime
 from starlette.responses import RedirectResponse
 import model
