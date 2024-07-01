@@ -8,32 +8,21 @@ mailer = emails.NewEmail(api_key)
 
 # Define email parameters directly
 mail_from = {
-    "name": "Your Name",
-    "email": "760041bp@gmail.com",
-    "message":"who let the dog out",
+    "email": "760041bp@gmail.com",  # Your email address
 }
 
 recipients = [
     {
-        "name": "Your Client",
-        "email": "bhargavp19082002@gmail.com",
-    }
-]
-
-reply_to = [
-    {
-        "name": "Name",
-        "email": "bhargavp.0802@gmail.com",
+        "email": "bhargavp19082002@gmail.com",  # Recipient's email address
     }
 ]
 
 # Set email attributes
 mailer.set_mail_from(mail_from)
 mailer.set_mail_to(recipients)
-mailer.set_subject("Hello!")
-mailer.set_html_content("<p>This is the HTML content</p>")
-mailer.set_plaintext_content("This is the text content")
-mailer.set_reply_to(reply_to)
+mailer.set_subject("Hello from MailerSend!")
+mailer.set_html_content("<p>This is the HTML content of the email.</p>")
+mailer.set_plaintext_content("This is the plain text content of the email.")
 
 # Send the email
 response = mailer.send()
