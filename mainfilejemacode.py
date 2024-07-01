@@ -246,7 +246,7 @@ async def func121212(request: Request, name:str=Form(...), email:str=Form(...), 
 
     mailer.send(mail_body)
     print(mailer.send(mail_body))
-
+    return HTTPException(status_code=status.HTTP_201_CREATED,detail="Thank you for contacting us........... reply will reply shortly")
 @bhargav.get('/getcontact')
 def func123212(db:Session=Depends(get_db)):
     e=db.query(model.contact).all()
