@@ -10,6 +10,7 @@ mailer = emails.NewEmail(api_key)
 mailer.set_mail_from({
     "name": "Your Name",
     "email": "760041bp@gmail.com",
+    "message":"hello i amn trsfdggsf"
 })
 
 mailer.set_mail_to([
