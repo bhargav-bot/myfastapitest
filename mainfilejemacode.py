@@ -224,7 +224,7 @@ async def func121212(request: Request, name:str=Form(...), email:str=Form(...), 
     db.refresh(var)
 
     message = MessageSchema(
-        subject="Thank you for your message",
+        subject={"Thank you for your message"},
         recipients=["760041bp@gmail.com"],  # Replace with your email address
         body=f"Name: {var.name}\nEmail: {var.email}\n\nMessage:\n{var.message}"
     )
