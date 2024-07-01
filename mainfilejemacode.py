@@ -39,7 +39,7 @@ templates = Jinja2Templates(directory="templates")
 
 conf=ConnectionConfig(
     MAIL_USERNAME= "Bhargavp19082002@gmail.com",
-    MAIL_PASSWORD= "Bhargav@1908",
+    MAIL_PASSWORD= "6045 2569",
     MAIL_FROM= "Bhargavp19082002@gmail.com",
     MAIL_PORT= 587,
     MAIL_SERVER= "smtp.gmail.com",
