@@ -10,7 +10,7 @@ mailer = emails.NewEmail(api_key)
 mail_body = {}
 
 mail_from = {
-    "email": "trial-k68zxl28yymlj905.mlsender.net",  # Your email address
+    "email": "Bhargavpatel@trial-k68zxl28yymlj905.mlsender.net",  # Your email address
 }
 
 recipients = [
