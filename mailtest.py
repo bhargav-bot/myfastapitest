@@ -1,17 +1,13 @@
 import mailersend
-from mailersend import Email
 
-mailersend = mailersend(api_key='mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec')
+mailer = mailersend.NewApiClient()
 
-def send_email():
-    email = Email(
-        from_email='bhargavp19082002@gmail.com',
-        to=['760041bp@gmail.com'],
-        subject='Your Subject',
-        text='Your plain text content',
-        html='<p>Your HTML content</p>'
-    )
-    response = mailersend.send(email)
-    print(response)
+subject = "Subject"
+text = "Greetings from the team, you got this message through MailerSend."
+html = "Greetings from the team, you got this message through MailerSend."
 
-send_email()
+my_mail = "info@domain.com"
+subscriber_list = [ 'recipient1@email.com',
+'recipient2@email.com', 'recipient3@email.com']
+
+mailer.send(my_mail, subscriber_list, subject, html, text)
