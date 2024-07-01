@@ -35,6 +35,18 @@ Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")
 
+
+
+conf=ConnectionConfig(
+    MAIL_USERNAME="760041bp@gmail.com",
+    MAIL_PASSWORD="Bhargav@1908",
+    MAIL_FROM="760041bp@gmail.com",
+    MAIL_PORT=587,
+    MAIL_SERVER="smtp.gmail.com",
+    MAIL_TLS=True,
+    MAIL_SSL=False,
+)
+
 @bhargav.get('/')
 def myfunc():
     return "hello world"
