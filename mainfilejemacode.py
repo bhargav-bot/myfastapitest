@@ -9,7 +9,7 @@ from fastapi.templating import Jinja2Templates
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from time import time
-from schemas import BHARGAV,PATEL,Logincredentials,Logininfo,BHARGAV12,LoginDatabase
+from schemas import BHARGAV,PATEL,Logincredentials,Logininfo,BHARGAV12,Login123
 from fastapi.middleware.cors import CORSMiddleware
 from authenticationfile import genratetoken
 from authenticationfile import check_token
@@ -186,7 +186,7 @@ def func12123(request: Request):
 
 @bhargav.post('/signuphome', status_code=status.HTTP_201_CREATED)
 def func2324232(request: Request, username:str=Form(...), password:str=Form(...),email:str=Form(...), db:Session=Depends(get_db)):
-    var=LoginDatabase(username=username, password=password,email=email)
+    var=Login123(username=username, password=password,email=email)
     print(type(var.username))
     db.add(var)
     db.commit()
