@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport", content="initial-scale=1.0,width=device-width">
+        <title>myform</title>
+        <style>
+            body{
+                background-color: aquamarine;
+            }
+            .container{
+                background-color: blue;
+                width: 200px;
+                height: 200px;
+                padding: 5%;
+                text-align: center;
+                margin-left: 35%;
+                margin-top: 22%;
+            }
+            .container label{
+                color: aquamarine;
+                margin-bottom: 25px;
+
+            }
+          
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+        <form action="/mypost" method="post">
+            <label for "name">name:</label><br>
+            <input type="text" id="name" name="username"><br><br>
+            <label for "password">password</label><br>
+            <input type="password" id="password" name="password"><br><br>
+
+            <button type="submit">Submit</button>
+        </form></div>
+    </body>
+</html>
