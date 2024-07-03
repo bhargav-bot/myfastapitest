@@ -41,9 +41,9 @@ templates = Jinja2Templates(directory="templates")
 
 
 
-@bhargav.get('/hi',response_class=HTMLResponse)
-def myfunc(request:Request):
-    return templates.TemplateResponse("jevitevi.html", {"request": Request})
+@bhargav.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
+    return templates.TemplateResponse("noob.html", {"request": request})
 
 @bhargav.get("/login", response_class=HTMLResponse)
 def show_login_form(request: Request):
