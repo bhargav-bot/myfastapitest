@@ -42,7 +42,7 @@ templates = Jinja2Templates(directory="templates")
 
 
 @bhargav.get("/", response_class=HTMLResponse)
-async def read_root(request: Request):
+def read_root(request: Request):
     return templates.TemplateResponse("noob.html", {"request": request})
 
 @bhargav.get("/login", response_class=HTMLResponse)
