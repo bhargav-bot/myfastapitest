@@ -42,8 +42,8 @@ templates = Jinja2Templates(directory="templates")
 
 
 @bhargav.get('/')
-def myfunc(request:Request):
-    return templates.TemplateResponse("noob.html", {"request": Request})
+def myfunc():
+    return templates.TemplateResponse("noob.html")
 
 @bhargav.get("/login", response_class=HTMLResponse)
 def show_login_form(request: Request):
