@@ -41,7 +41,7 @@ templates = Jinja2Templates(directory="templates")
 
 
 
-@bhargav.get('/',response_class=HTMLResponse)
+@bhargav.get('/hi',response_class=HTMLResponse)
 def myfunc(request:Request):
     return templates.TemplateResponse("jevitevi.html", {"request": Request})
 
