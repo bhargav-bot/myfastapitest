@@ -189,7 +189,25 @@ def func1211(request: Request, username:str=Form(...),password:str=Form(...),db:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect password")
     else:
         return templates.TemplateResponse("welcome.html", {"request": request})
+
+ 
+@bhargav.get('/home2',response_class=HTMLResponse)
+def func1232213(request: Request):
+    return templates.TemplateResponse("home2.html", {"request": request})
+
+
+@bhargav.post('/home2')
+def func12116845(request: Request, username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
+    var=db.query(model.LoginDatabase).filter(model.LoginDatabase.username==username).first()
     
+    print(var.password)
+    print(type(var.username))
+    if var is None or var==0:
+        return templates.TemplateResponse("404.html", {"request": request}, status_code=status.HTTP_404_NOT_FOUND)
+    if var.password!=password:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect password")
+    else:
+        return templates.TemplateResponse("welcome.html", {"request": request})  
 @bhargav.get('/signuphome',response_class=HTMLResponse)
 def func12123(request: Request):
     return templates.TemplateResponse("signuphome.html", {"request": request})
