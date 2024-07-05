@@ -27,12 +27,21 @@
             }
             .box {
                 background-color: gray;
+                z-index: 1;
                 height: 40px;
                 width: 100%;
                 text-align: center;
                 
                 margin-top: 5%;
                 padding-top: 5%;
+            }
+            .background-video{
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                position: relative;
+                z-index: -1;
             }
         nav{
             background-color: black;
@@ -55,6 +64,7 @@
             text-decoration: none;
             padding: 8px 12px;
             transition: background-color 0.3s ease;
+            z-index: 1;
         }
         nav ul li a:hover
         {
@@ -84,7 +94,10 @@
                 <a href="/signuphome">Sign Up</a></div>
   
         </form></div>
-            
+        <div class="background-video">
+            <iframe src="https://player.vimeo.com/video/977719384?h=320fa84c97&autoplay=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+         
            
 
     </body>
