@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Navigation Bar</title>
+    <title>Full Screen Background Video</title>
     <style>
-        /* CSS for navigation bar */
-        body {
-            font-family: Arial, sans-serif;
+        body, html {
             margin: 0;
-            height: 100%;
-            width: 100%;
             padding: 0;
+            height: 100%;
+            overflow: hidden; /* Prevents scrollbars */
         }
 
         .background-video {
             position: fixed;
-            top: 10%;
+            top: 20%;
             left: 0;
-            width:100%;
+            width: 100%;
             height: 100%;
             z-index: -1; /* Ensure the video stays in the background */
         }
-        nav {
-            background-color: #333;
+
+        .content {
+            position: relative;
+            z-index: 1; /* Ensure content appears above the video */
+            text-align: center;
+            padding-top: 20px;
             color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
             padding: 10px;
+            box-sizing: border-box;
         }
 
         nav ul {
@@ -36,7 +48,7 @@
 
         nav ul li {
             display: inline;
-            margin-right: 0px;
+            margin-right: 10px;
         }
 
         nav ul li a {
@@ -61,10 +73,15 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
+
     <div class="background-video">
         <iframe src="https://player.vimeo.com/video/977719384?h=320fa84c97&autoplay=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <!-- Your webpage content goes here -->
+
+    <div class="content">
+        <h1>Welcome to My Website</h1>
+        <p>This is some example text that will appear on top of the background video.</p>
+    </div>
 
 </body>
 </html>
