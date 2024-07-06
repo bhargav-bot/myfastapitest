@@ -37,7 +37,7 @@ def test_ifo(client1):
     response=client1.get("/getinfo")
     print(response.json())
     assert response.status_code == 200
-
+#hello khali khali 
 def test_heroku():
     url='https://bhargav-api-6b3bcd214c72.herokuapp.com/getinfo/'
     response=requests.get(url)
