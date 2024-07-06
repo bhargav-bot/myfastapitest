@@ -5,12 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Full Screen Background Video</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden; /* Prevents scrollbars */
-        }
 
         .background-video {
             position: fixed;
@@ -21,68 +15,18 @@
             z-index: -1; /* Ensure the video stays in the background */
         }
 
-        .content {
-            position: relative;
-            z-index: 1; /* Ensure content appears above the video */
-            text-align: center;
-            padding-top: 20px;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
 
-        nav {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-            padding: 10px;
-            box-sizing: border-box;
-        }
-
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            padding: 8px 12px;
-            transition: background-color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            background-color: #555;
-        }
     </style>
 </head>
 <body>
     
-    <nav>
-        <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+
 
     <div class="background-video">
         <iframe src="https://player.vimeo.com/video/977719384?h=320fa84c97&autoplay=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
 
     </div>
 
-    <div class="content">
-        <h1>Welcome to My Website</h1>
-        <p>This is some example text that will appear on top of the background video.</p>
-    </div>
-
+   
 </body>
 </html>
