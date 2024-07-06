@@ -200,7 +200,7 @@ def func1232213(request: Request):
 def func12116845(request: Request, username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
     var=db.query(model.LoginDatabase).filter(model.LoginDatabase.username==username).first()
     
-    print(var.password)
+    print(var.password) 
     print(type(var.username))
     if var is None or var==0:
         return templates.TemplateResponse("404.html", {"request": request}, status_code=status.HTTP_404_NOT_FOUND)
