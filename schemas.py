@@ -41,3 +41,17 @@ class Logininfo(BaseModel):
         orm_mode=True
 
 
+class Login123(BaseModel):
+    username:str
+    email:str
+    password:str
+    class config:
+        orm_mode=True
+
+class contact12(BaseModel):
+    name:str
+    email:str
+    message:str
+    class config:
+        orm_mode=True
+

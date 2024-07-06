@@ -9,15 +9,21 @@ from fastapi.templating import Jinja2Templates
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from time import time
-from schemas import BHARGAV,PATEL,Logincredentials,Logininfo,BHARGAV12
-from fastapi.middleware.cors import CORSMiddleware
+from schemas import BHARGAV,PATEL,Logincredentials,Logininfo,BHARGAV12,Login123,contact12
 from authenticationfile import genratetoken
 from authenticationfile import check_token
-from model import User12,Logininfo
+from model import User12,Logininfo,contact
 import time,datetime
 from starlette.responses import RedirectResponse
 import model
+from fastapi.responses import HTMLResponse
 
+from pydantic import EmailStr
+import mailersend
+from mailersend import emails
+api_key = "mlsn.43f1eaa97a620bfdb525476088b80d3c481a15d12a5e50b708bf34e00ff9eaec"
+mailer = emails.NewEmail(api_key)
+current_time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 #this is the change i am adding to my file to check if the change is execuated on my server 
 
@@ -31,9 +37,13 @@ Base.metadata.create_all(bind=engine)
 
 templates = Jinja2Templates(directory="templates")
 
-@bhargav.get('/')
-def myfunc():
-    return "hello world"
+
+
+
+
+@bhargav.get("/", response_class=HTMLResponse)
+def read_root(request: Request):
+    return templates.TemplateResponse("noob.html", {"request": request})
 
 @bhargav.get("/login", response_class=HTMLResponse)
 def show_login_form(request: Request):
@@ -162,10 +172,107 @@ def func432():
     return RedirectResponse("https://www.utctime.net/utc-timestamp.net")
 
 
+@bhargav.get('/home',response_class=HTMLResponse)
+def func1232(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
+
+@bhargav.post('/home')
+def func1211(request: Request, username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
+    var=db.query(model.LoginDatabase).filter(model.LoginDatabase.username==username).first()
+    
+    print(var.password)
+    print(type(var.username))
+    if var is None or var==0:
+        return templates.TemplateResponse("404.html", {"request": request}, status_code=status.HTTP_404_NOT_FOUND)
+    if var.password!=password:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect password")
+    else:
+        return templates.TemplateResponse("welcome.html", {"request": request})
+
+ 
+@bhargav.get('/home2',response_class=HTMLResponse)
+def func1232213(request: Request):
+    return templates.TemplateResponse("home2.html", {"request": request})
+
+
+@bhargav.post('/home2')
+def func12116845(request: Request, username:str=Form(...),password:str=Form(...),db:Session=Depends(get_db)):
+    var=db.query(model.LoginDatabase).filter(model.LoginDatabase.username==username).first()
+    
+    print(var.password)
+    print(type(var.username))
+    if var is None or var==0:
+        return templates.TemplateResponse("404.html", {"request": request}, status_code=status.HTTP_404_NOT_FOUND)
+    if var.password!=password:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect password")
+    else:
+        return templates.TemplateResponse("welcome.html", {"request": request})  
+@bhargav.get('/signuphome',response_class=HTMLResponse)
+def func12123(request: Request):
+    return templates.TemplateResponse("signuphome.html", {"request": request})
+
+@bhargav.post('/signuphome', status_code=status.HTTP_201_CREATED)
+def func2324232(request: Request, username:str=Form(...), password:str=Form(...),email:str=Form(...), db:Session=Depends(get_db)):
+    var=model.LoginDatabase(username=username, password=password,email=email)
+    print(type(var.username))
+    db.add(var)
+    db.commit()
+    db.refresh(var)
+    return templates.TemplateResponse("signupsuccesfulhome.html", {"request": request, 'username':username})
+from datetime import datetime
+@bhargav.get('/contact',response_class=HTMLResponse)
+def func12321(request: Request):
+    return templates.TemplateResponse("contact.html", {"request": request})
+
+
+@bhargav.post('/contact')
+async def func121212(request: Request, name:str=Form(...), email:str=Form(...), message:str=Form(...),db:Session=Depends(get_db)):
+
+    var=model.contact(name=name, email=email, message=message)
+    db.add(var)
+    db.commit()
+    db.refresh(var)
+
+
+    # Define email parameters
+    mail_body = {}
+    mail_from = {
+        "email": "Bhargavpatel@patels.online",
+    }
+    recipients = [
+        {
+            "email": "bhargavp19082002@gmail.com",  # Replace with the actual recipient's email
+        }
+    ]
+
+    # Set email attributes
+    mailer.set_mail_from(mail_from, mail_body)
+    mailer.set_mail_to(recipients, mail_body)
+    mailer.set_subject("New Contact Form Submission:{}".format(current_time1), mail_body)
+    mailer.set_html_content(f"<p>Name: {name}</p><p>Email: {email}</p><p>Message: {message}</p><p>Time:{current_time1}", mail_body)
+    #mailer.set_plaintext_content(f"Name: {name}\nEmail: {email}\nMessage: {message}", mail_body)
+
+    mailer.send(mail_body)
+    return templates.TemplateResponse("contactresponse.html", {"request": request},status_code=status.HTTP_201_CREATED)
+
+   # return HTTPException(status_code=status.HTTP_201_CREATED,detail="Thank you for contacting us........... reply will reply shortly")
+@bhargav.get('/getcontact')
+def func123212(db:Session=Depends(get_db)):
+    e=db.query(model.contact).all()
+    return e
+
+
 
 
     
+'''    message = MessageSchema(
+    subject="Thank you for your message",  # Ensure subject is a string
+    recipients=["760041bp@gmail.com"],    # Replace with your actual recipients
+    body=f"Name: {var.name}\nEmail: {var.email}\n\nMessage:\n{var.message}",
+    subtype="plain"  # Add the subtype field with an appropriate value
 
+        fm = FastMail(conf)
+    await fm.send_message(message)
 
-
-    
+)'''

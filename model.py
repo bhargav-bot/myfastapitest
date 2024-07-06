@@ -17,3 +17,15 @@ class Logininfo(Base):
     __tablename__='logininfo'
     username=Column(Integer,primary_key=True)
     password=Column(String,nullable=False)
+
+class LoginDatabase(Base):
+    __tablename__='logindatabase'
+    username=Column(String, primary_key=True)
+    password=Column(String, nullable=False)
+    email=Column(String, nullable=False)
+
+class contact(Base):
+    __tablename__='contact'
+    name=Column(String, nullable=False)
+    email=Column(String, nullable=False)
+    message=Column(String, nullable=False, primary_key=True)
