@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport", content="initial-scale=1.0,width=device-width">
+        <title>myform</title>
+        <style>
+            body{
+                background-color: aquamarine;
+                background-image: url("https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg");
+             
+            }
+            .container{
+                width:fit-content;
+                background-color: blue;
+                width: 200px;
+                height: 200px;
+                padding: 5%;
+                text-align: center;
+                margin-left: 35%;
+                margin-top: 22%;
+                z-index: 1;
+            }
+            .container label{
+                color: aquamarine;
+                margin-bottom: 25px;
+                z-index: 1;
+            }
+            .box {
+                background-color: gray;
+                z-index: 1;
+                height: 40px;
+                width: 100%;
+                text-align: center;
+                
+                margin-top: 5%;
+                padding-top: 5%;
+            }
+            .background-video{
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                position: relative;
+                z-index: -1;
+            }
+        nav{
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            z-index: 2;
+
+        }
+        nav ul{
+            z-index: 2;
+            list-style-type:none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li{
+            display: inline;
+            margin-right: 10px;
+            z-index: 2;
+        }
+        nav ul li a{
+            color: gray;
+            text-decoration: none;
+            padding: 8px 12px;
+            transition  : background-color 0.3s ease;
+            z-index: 2;
+        }
+        nav ul li a:hover
+        {
+            z-index: 2;
+            background-color: aliceblue;
+        }
+        </style>
+
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/singuphome">Signup</a></li>
+                <li><a href="/contact">ContactUs</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+        <form action="/home2" method="post">
+            <label for "name">name:</label><br>
+            <input type="text" id="name" name="username"><br><br>
+            <label for "password">password</label><br>
+            <input type="password" id="password" name="password"><br><br>
+
+            <button type="submit">Submit</button><br><br>
+
+            <div class="box">          
+                <a href="/signuphome">Sign Up</a></div>
+  
+        </form></div>
+        <div class="background-video">
+            <iframe src="https://player.vimeo.com/video/977719384?h=320fa84c97&autoplay=1&loop=1&background=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+         
+           
+
+    </body>
+</html>
