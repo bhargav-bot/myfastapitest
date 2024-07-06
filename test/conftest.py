@@ -13,7 +13,8 @@ from sqlalchemy.ext.declarative import declarative_base
 
 
 
-SQL_ALCHEMY_DATABASE_URL = f'postgresql://{Settings.DATABASE_USERNAME}:{Settings.DATABASE_PASSWORD}@localhost:{Settings.database_port1}/test'
+SQL_ALCHEMY_DATABASE_URL = f'postgresql://{Settings.DATABASE_USERNAME}:{Settings.DATABASE_PASSWORD}@{Settings.DATABASE_HOSTNAME}:{Settings.database_port1}/{Settings.DATABASE_NAME}'
+print('SQL_ALCHEMY_DATABASE_URL::')
 print(SQL_ALCHEMY_DATABASE_URL)
 engine = create_engine(SQL_ALCHEMY_DATABASE_URL)
 test_sessionlocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
@@ -32,9 +33,7 @@ def test_user(client1):
     user_data = {"username": 1908, "password": "giyanhaiaap"}
     response=client1.post("/signup", data=user_data)
     assert response.status_code == 200
-
     return user_data
-
 
 
 @pytest.fixture()
@@ -79,5 +78,23 @@ def client1(session):
 def gettoken(client1,test_user):
     user_data = {"name": "Bharagv", "age": 22,"id":4422}
     response=client1.post("/login12", json=user_data)
+    #print("response:::"+str(response.json()))
     assert response.status_code == 200
     return response.json()["token"]
+@pytest.fixture
+def gettoken1(client1,test_user):
+    user_data = {"name": "Bharagv1", "age": 22,"id":44322}
+    response=client1.post("/login12", json=user_data)
+    print("response:::"+str(response.json()))
+    assert response.status_code == 200
+    return response
+
+
+
+@pytest.fixture
+def athoriziedclient(test_user):
+    user_data = {"username": 190812, "password": "giyanhaiaap"}
+    response=client1.post("/signup", data=user_data)
+    response1=client1.post('/login12',json=user_data)
+    var=BHARGAV12(**response1.json())
+    return var
