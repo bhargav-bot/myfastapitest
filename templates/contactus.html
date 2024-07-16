@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color:rgb(239, 209, 209);
+        }
+        .form{
+            height: 250px;
+            width: 250px;
+            margin: 100px auto;
+            background:linear-gradient(red,blue);
+            padding: 20px 10px 20px 10px;
+            border-radius: 10px;
+            color:black;
+            text-shadow: 0.5px 0.7px 2px white;
+
+            
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            margin: 2px auto;
+            background-color:rgb(203, 207, 211);
+            border: 0px;
+            text-align: center;
+            border-radius: 3px;
+            
+            }
+        button{
+            background-color:azure;
+            border: 0px;
+            border-radius: 3px;
+            text-shadow: 0.2px 0.1px 0.6px black;
+            padding: 3px 6px;
+            z-index: index 10;
+            cursor: pointer;
+            transition: background 10ms ease;
+        }
+        button:hover{
+            background-color: rgb(188, 193, 188);
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <form action="/contact" method="post">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="name" required ><br><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            
+            <label for="message">Message:</label><br>
+            <textarea type="text" id="message" name="message" rows="4" required></textarea><br><br>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
