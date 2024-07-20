@@ -19,8 +19,8 @@ import model
 from config import Settings
 import random, string
 
-
-
+import uuid
+from uuid import uuid4
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
@@ -71,7 +71,7 @@ for num in range(1,200):
         continue
     else:
         try:
-            cursor.execute("""INSERT INTO schedule (name,id,country,gender,unique_id) VALUES (%s,%s,%s,%s) on conflict do nothing""",(name,id,country,gender))
+            cursor.execute("""INSERT INTO schedule (name,id,country,gender,unique_id) VALUES (%s,%s,%s,%s,%s) on conflict do nothing""",(name,id,country,gender,uuid.uuid4()))
             conn.commit()
             print(f"Data inserted successfully:{name},{id}")
         except Exception as error:
